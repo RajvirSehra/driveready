@@ -16,34 +16,26 @@
 <style>
 /* ── DESIGN TOKENS ── */
 :root {
-  --ink:    #060910;
-  --ink2:   #0c1322;
-  --ink3:   #111b2e;
-  --ink4:   #18253d;
-  --blue:   #2563eb;
-  --blue2:  #3b82f6;
-  --blue3:  #93c5fd;
-  --gold:   #f59e0b;
-  --gold2:  #fbbf24;
-  --white:  #ffffff;
-  --t1:     rgba(255,255,255,.92);
-  --t2:     rgba(255,255,255,.65);
-  --t3:     rgba(255,255,255,.38);
-  --r:      16px;
-  --sh-gold: 0 8px 32px rgba(245,158,11,.35);
-  --sh-blue: 0 8px 32px rgba(37,99,235,.35);
+  --ink: #060910; --ink2: #0c1322; --ink3: #111b2e; --ink4: #18253d;
+  --blue: #2563eb; --blue2: #3b82f6; --blue3: #93c5fd;
+  --gold: #f59e0b; --gold2: #fbbf24; --gold3: #fde68a;
+  --ok: #10b981; --err: #ef4444; --white: #ffffff;
+  --g1: rgba(255,255,255,.06); --g2: rgba(255,255,255,.11); --g3: rgba(255,255,255,.18);
+  --t1: rgba(255,255,255,.92); --t2: rgba(255,255,255,.65); --t3: rgba(255,255,255,.38);
+  --r: 16px; --rs: 10px;
+  --sh-gold: 0 8px 32px rgba(245,158,11,.35); --sh-blue: 0 8px 32px rgba(37,99,235,.35);
 }
 
 /* ── RESET ── */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
 html { scroll-behavior:smooth; font-size:16px }
 body {
-  font-family:'Inter', sans-serif;
-  background: var(--ink);
-  color: var(--white);
-  overflow-x: hidden;
-  line-height: 1.6;
+  font-family:'Inter', sans-serif; background: var(--ink); color: var(--white);
+  overflow-x: hidden; line-height: 1.65; -webkit-font-smoothing: antialiased;
 }
+h1,h2,h3,h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
+.sub { font-family: 'DM Serif Display', serif !important; font-style: italic; font-weight: 400 !important; }
+a { text-decoration:none; color:inherit }
 
 /* ── NAV ── */
 nav {
@@ -51,211 +43,231 @@ nav {
   padding:20px 52px; display:flex; align-items:center; justify-content:space-between;
   transition:all .3s ease;
 }
-nav.sc { background:rgba(6,9,16,.9); backdrop-filter:blur(20px); padding:14px 52px; border-bottom:1px solid rgba(255,255,255,.1); }
-.logo { font-size:1.4rem; font-weight:800; cursor:pointer; color:#fff; letter-spacing:-.05em; }
-.logo em { font-style:normal; color:var(--gold); }
-.navl { display:flex; gap:28px; list-style:none; align-items:center; }
+nav.sc { background:rgba(6,9,16,.88); backdrop-filter:blur(24px); border-bottom:1px solid rgba(255,255,255,.08); padding:14px 52px; }
+.logo { font-size:1.4rem; font-weight:800; letter-spacing:-.05em; cursor:pointer; }
+.logo em { font-style:normal; color:var(--gold) }
+.navl { display:flex; gap:28px; list-style:none; align-items:center }
 .navl a { font-size:.83rem; font-weight:500; color:var(--t2); cursor:pointer; }
 .btn-cta { background:var(--gold); color:var(--ink); padding:9px 22px; border-radius:8px; font-weight:700; box-shadow:var(--sh-gold); }
 
-/* ── LAYOUT ── */
-.sec { padding:88px 0; }
-.inn { max-width:1160px; margin:0 auto; padding:0 48px; }
-.hdr { margin-bottom:52px; }
+/* ── LAYOUT HELPERS ── */
+.sec { padding:88px 0 }
+.inn { max-width:1160px; margin:0 auto; padding:0 48px }
 .lbl { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
-.ttl { font-size:clamp(1.9rem,3.8vw,3rem); font-weight:800; margin-bottom:14px; letter-spacing:-.03em; }
-.sub { color:var(--t2); font-size:1.05rem; max-width:520px; }
+.ttl { font-size:clamp(1.9rem,3.8vw,3rem); font-weight:800; margin-bottom:14px; }
+.hdr { margin-bottom:52px }
 
-/* ── THE FIX: UNIFORM GRID CARDS ── */
+/* ── REVEAL ANIMATIONS ── */
+.rv { opacity:0; transform:translateY(24px); transition: .58s ease; }
+.rv.on { opacity:1; transform:none }
+
+/* ── THE FIX: UNIFORM GRID HEIGHTS ── */
 .fgrid { 
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 16px; 
-  align-items: stretch; /* Stretches cards in a row to match height */
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; 
+  align-items: stretch; /* Stretch container */
 }
-
 .fcard {
-  background: var(--ink3);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: var(--r);
-  padding: 30px 24px;
-  display: flex;
-  flex-direction: column; /* Allows internal elements to grow */
-  height: 100%;
-  transition: transform .2s;
+  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r); padding:30px 24px;
+  display: flex; flex-direction: column; /* Allow content to grow */
+  height: 100%; transition:all .28s;
 }
-.fcard:hover { transform: translateY(-5px); border-color: var(--gold); }
+.fcard:hover { transform:translateY(-4px); border-color:var(--gold); }
+.ficon { width:44px; height:44px; background:rgba(37,99,235,.15); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:15px; }
+.fcard h3 { font-size:.97rem; font-weight:700; margin-bottom:10px; }
+.fcard p { font-size:.83rem; color:var(--t2); flex-grow: 1; } /* Fills the space */
 
-.ficon {
-  width: 44px; height: 44px;
-  background: rgba(37,99,235,.15);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; margin-bottom: 15px;
-}
-
-.fcard h3 { font-size: .97rem; font-weight: 700; margin-bottom: 10px; }
-
-.fcard p { 
-  font-size: .83rem; 
-  color: var(--t2); 
-  flex-grow: 1; /* THIS IS THE KEY: it fills the empty space so boxes are even */
-}
-
-/* ── PACKAGES GRID ── */
-.ogrid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 20px; 
-  align-items: stretch;
-}
-
+/* ── THE FIX: UNIFORM PACKAGE CARDS ── */
+.ogrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items: stretch; }
 .ocard {
-  background: var(--ink3);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: var(--r);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  cursor: pointer;
-  transition: 0.3s;
+  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r); padding:28px 24px;
+  display: flex; flex-direction: column; height: 100%; transition:all .28s; cursor:pointer;
 }
-.ocard:hover { border-color: var(--gold); transform: translateY(-5px); }
-
-.ocard h3 { margin-bottom: 10px; }
-.odesc { 
-  font-size: .85rem; 
-  color: var(--t2); 
-  margin-bottom: 20px; 
-  flex-grow: 1; /* Keeps the price/button at the bottom */
-}
-.oprice { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+.ocard:hover { transform:translateY(-5px); border-color:var(--gold); }
+.ocard-icon { font-size:1.4rem; margin-bottom:16px; }
+.obody { flex-grow: 1; display: flex; flex-direction: column; }
+.odesc { font-size:.85rem; color:var(--t3); margin-bottom:18px; flex-grow: 1; } /* Pushes price to bottom */
+.oprice { font-size:1.75rem; font-weight:800; color:var(--gold); }
 
 /* ── HERO ── */
-.hero { 
-  min-height: 80vh; display: flex; align-items: center; position: relative; 
-  background: linear-gradient(115deg, rgba(6,9,16,1) 0%, rgba(18,27,46,1) 100%);
-  padding-top: 100px;
-}
-.hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 20px; }
+.hero { min-height:100vh; position:relative; display:flex; align-items:center; overflow:hidden }
+.hero-bg { position:absolute; inset:0; z-index:0 }
+.hero-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(.28); }
+.hero-grad { position:absolute; inset:0; background:linear-gradient(115deg, rgba(6,9,16,.96) 0%, rgba(6,9,16,.72) 52%, transparent 100%) }
+.hero-c { position:relative; z-index:2; width:100%; }
 
-/* ── BUTTONS ── */
-.b-gold { background: var(--gold); color: var(--ink); padding: 14px 28px; border-radius: 8px; font-weight: 700; display: inline-block; text-decoration: none; }
+/* ── SHARED COMPONENTS ── */
+.cstrip { background:var(--blue); padding:15px; text-align:center; font-weight:600; font-size:.88rem; }
+.tbar { background:rgba(12,19,34,.6); border-y:1px solid rgba(255,255,255,.07); padding:20px; }
+.tinn { max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.ti { font-size:.8rem; color:var(--t2); }
+#map { height:430px; border-radius:var(--r); margin-top:40px; border:1px solid rgba(255,255,255,.1); }
 
-/* ── MAP ── */
-#map { height: 400px; border-radius: 16px; margin-top: 30px; border: 1px solid #333; }
+/* ── MODAL ── */
+.mover { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(10px); z-index:2000; display:none; align-items:center; justify-content:center; padding:20px; }
+.mover.open { display:flex; }
+.modal { background:#0d1526; border-radius:18px; max-width:500px; width:100%; padding:30px; position:relative; }
+.mclose { position:absolute; top:15px; right:15px; cursor:pointer; }
+.fg { margin-bottom:15px; }
+.fg label { display:block; font-size:.7rem; color:var(--blue3); margin-bottom:5px; text-transform:uppercase; font-weight:700; }
+.fg input { width:100%; padding:12px; background:var(--g1); border:1px solid #333; color:#fff; border-radius:8px; }
 
-/* ── MOBILE ── */
-@media (max-width: 900px) {
-  .fgrid { grid-template-columns: 1fr; }
-  .inn { padding: 0 20px; }
-  nav { padding: 20px; }
-}
+@media(max-width:768px){ .fgrid { grid-template-columns:1fr; } .navl { display:none; } .inn { padding:0 24px; } }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="logo">Drive<em>Ready</em></div>
+  <div class="logo" onclick="location.reload()">Drive<em>Ready</em></div>
   <ul class="navl">
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#packages">Pricing</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#off">Pricing</a></li>
     <li><a href="#map-sec">Areas</a></li>
-    <li><a href="#" class="btn-cta">Book Now</a></li>
+    <li><a onclick="oM('Enquiry','','🚗')" class="btn-cta">Book Lesson</a></li>
   </ul>
 </nav>
 
-<section class="hero">
-  <div class="inn">
-    <div class="lbl">DVSA Approved Driving School</div>
-    <h1>Drive with Confidence.<br><span style="color:var(--gold)">Pass First Time.</span></h1>
-    <p class="sub" style="margin-bottom:30px;">Premium driving lessons in Twickenham, Isleworth, and Richmond. 94% first-time pass rate.</p>
-    <a href="#packages" class="b-gold">View Packages</a>
-  </div>
-</section>
-
-<section class="sec" id="why" style="background:var(--ink2)">
-  <div class="inn">
-    <div class="hdr">
-      <div class="lbl">Why DriveReady</div>
-      <h2 class="ttl">Driving lessons done properly</h2>
-    </div>
-    
-    <div class="fgrid">
-      <!-- Card 1 -->
-      <div class="fcard">
-        <div class="ficon">🎯</div>
-        <h3>Structured Learning</h3>
-        <p>Progressive curriculum aligned with DVSA standards. You’ll always know exactly what stage you are at in your journey.</p>
-      </div>
-      <!-- Card 2 -->
-      <div class="fcard">
-        <div class="ficon">🚗</div>
-        <h3>Modern Dual-Control Cars</h3>
-        <p>Clean, well-maintained vehicles equipped with dual controls for your absolute safety and comfort.</p>
-      </div>
-      <!-- Card 3 -->
-      <div class="fcard">
-        <div class="ficon">📍</div>
-        <h3>Isleworth Test Experts</h3>
-        <p>We know every road, hazard, and trick around the Isleworth Test Centre. We prepare you for the real exam routes.</p>
+<div id="app">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600" alt="Hero"></div>
+    <div class="hero-grad"></div>
+    <div class="inn hero-c">
+      <div class="lbl" style="color:var(--blue3)">DVSA-Approved School</div>
+      <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); margin-bottom:20px;">Drive with <span style="color:var(--gold)">Confidence.</span></h1>
+      <p style="max-width:500px; color:var(--t2); margin-bottom:35px;">Premium driving lessons in Twickenham & Isleworth. 94% first-time pass rate with expert ADI instructors.</p>
+      <div style="display:flex; gap:15px; flex-wrap:wrap;">
+        <a href="#off" class="btn-cta" style="padding:15px 30px;">View Packages</a>
+        <a href="tel:02089771234" style="border:1px solid var(--t3); padding:15px 30px; border-radius:8px; font-weight:700;">📞 020 8977 1234</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="packages">
-  <div class="inn">
-    <div class="hdr">
-      <div class="lbl">Our Pricing</div>
-      <h2 class="ttl">Choose your path to freedom</h2>
-    </div>
+  <div class="cstrip">📞 Call 020 8977 1234 to speak with an instructor today</div>
 
-    <div class="ogrid">
-      <div class="ocard">
-        <div class="lbl">Manual</div>
-        <h3>Single Lesson</h3>
-        <p class="odesc">Perfect for an assessment or pay-as-you-go learning. 1 hour of professional tuition.</p>
-        <div class="oprice">£38 <small style="font-size:12px; color:var(--t3)">/hr</small></div>
-      </div>
-
-      <div class="ocard" style="border-color:var(--gold)">
-        <div class="lbl">Most Popular</div>
-        <h3>20 Hour Block</h3>
-        <p class="odesc">Our best-selling package. Includes mock tests and full Isleworth test route preparation. Save £40 compared to single lessons.</p>
-        <div class="oprice">£720</div>
-      </div>
-
-      <div class="ocard">
-        <div class="lbl">Automatic</div>
-        <h3>Single Lesson</h3>
-        <p class="odesc">Stress-free learning without the clutch. High-spec modern automatic vehicle.</p>
-        <div class="oprice">£40 <small style="font-size:12px; color:var(--t3)">/hr</small></div>
-      </div>
+  <div class="tbar">
+    <div class="tinn">
+      <div class="ti">⭐ 4.9/5 Google Reviews</div>
+      <div class="ti">🏆 DVSA Approved</div>
+      <div class="ti">📍 Isleworth Specialist</div>
+      <div class="ti">🚗 Manual & Auto</div>
     </div>
   </div>
-</section>
 
-<section class="sec" id="map-sec" style="background:var(--ink2)">
-  <div class="inn">
-    <div class="lbl">Areas Covered</div>
-    <h2 class="ttl">We come to you</h2>
-    <p class="sub">Free pickup and drop-off across Twickenham, Isleworth, Richmond, and Hounslow.</p>
-    <div id="map"></div>
+  <!-- WHY SECTION -->
+  <section class="sec" id="why" style="background:var(--ink2)">
+    <div class="inn">
+      <div class="hdr rv">
+        <div class="lbl">Why DriveReady</div>
+        <h2 class="ttl">The better way to learn</h2>
+        <p class="sub" style="color:var(--t2)">We don't just teach you to pass; we teach you to drive for life.</p>
+      </div>
+      <div class="fgrid">
+        <div class="fcard rv">
+          <div class="ficon">🎯</div>
+          <h3>Structured Learning</h3>
+          <p>Every lesson follows a DVSA-aligned curriculum. You’ll track your progress in real-time and know exactly what you need to work on next.</p>
+        </div>
+        <div class="fcard rv">
+          <div class="ficon">🚗</div>
+          <h3>Modern Fleet</h3>
+          <p>Learn in clean, modern, dual-controlled cars. Whether you prefer Manual or Automatic, our vehicles are the perfect environment to learn.</p>
+        </div>
+        <div class="fcard rv">
+          <div class="ficon">📍</div>
+          <h3>Local Expertise</h3>
+          <p>We specialize in the Isleworth Test Centre. We know every roundabout, junction, and common hazard on the official exam routes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="sec" id="off">
+    <div class="inn">
+      <div class="hdr rv">
+        <div class="lbl">Our Packages</div>
+        <h2 class="ttl">Affordable Excellence</h2>
+      </div>
+      <div class="ogrid">
+        <div class="ocard rv" onclick="oM('Manual Lesson','£38/hr','🚗')">
+          <div class="ocard-icon">🚗</div>
+          <h3>Manual Driving</h3>
+          <p class="odesc">High-quality 1-on-1 manual tuition for learners of all levels. Includes free local pickup.</p>
+          <div class="oprice">£38<small style="font-size:12px; color:var(--t3)">/hr</small></div>
+        </div>
+        <div class="ocard rv" style="border-color:var(--gold)" onclick="oM('20hr Block','£720','🏆')">
+          <div class="ocard-icon">🏆</div>
+          <h3>20-Hour Block</h3>
+          <p class="odesc">Our best value package. Save £40. Includes a free mock test and priority booking for local test dates.</p>
+          <div class="oprice">£720</div>
+        </div>
+        <div class="ocard rv" onclick="oM('Automatic Lesson','£40/hr','⚡')">
+          <div class="ocard-icon">⚡</div>
+          <h3>Automatic Driving</h3>
+          <p class="odesc">Modern automatic lessons. Faster learning curve, no clutch control stress. Ideal for busy urban driving.</p>
+          <div class="oprice">£40<small style="font-size:12px; color:var(--t3)">/hr</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="sec" id="map-sec" style="background:var(--ink2)">
+    <div class="inn">
+      <div class="lbl">Coverage</div>
+      <h2 class="ttl">We come to you</h2>
+      <div id="map"></div>
+    </div>
+  </section>
+</div>
+
+<!-- MODAL -->
+<div class="mover" id="mover">
+  <div class="modal">
+    <div class="mclose" onclick="cM()">✕</div>
+    <h3 id="mtitle" style="margin-bottom:10px">Enquire & Book</h3>
+    <p style="font-size:.8rem; color:var(--t3); margin-bottom:20px;">Leave your details and an instructor will call you back within 2 hours.</p>
+    <div class="fg"><label>Name</label><input type="text" placeholder="Your name"></div>
+    <div class="fg"><label>Phone</label><input type="tel" placeholder="Your mobile number"></div>
+    <div class="fg"><label>Postcode</label><input type="text" placeholder="Pickup postcode"></div>
+    <button class="btn-cta" style="width:100%; padding:15px; border:none; cursor:pointer;" onclick="alert('Thanks! We will call you back shortly.')">Send Enquiry</button>
   </div>
-</section>
+</div>
 
 <script>
-  // Simple scroll effect for nav
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('sc', window.scrollY > 50);
-  });
+// UI Scripts
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('sc', window.scrollY > 50);
+});
 
-  // Map Initialization
-  const map = L.map('map').setView([51.455, -0.345], 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
-  L.marker([51.4493, -0.3364]).addTo(map).bindPopup('Twickenham').openPopup();
+function oM(title, price, icon) {
+  document.getElementById('mtitle').innerText = title + " - " + price;
+  document.getElementById('mover').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function cM() {
+  document.getElementById('mover').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Reveal logic
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('on');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+
+// Map logic
+const map = L.map('map').setView([51.455, -0.345], 13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+L.marker([51.4493, -0.3364]).addTo(map).bindPopup('Twickenham Hub').openPopup();
 </script>
 
 </body>
 </html>
+
+
+     
