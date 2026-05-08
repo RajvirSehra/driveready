@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DriveReady | Premium Driving School – Twickenham & Isleworth</title>
 <meta name="description" content="DriveReady – DVSA-approved driving school in Twickenham, Isleworth & Richmond. Manual from £38/hr, automatic from £40/hr. 94% first-time pass rate. Book today.">
+<meta property="og:title" content="DriveReady – Premium Driving School Twickenham & Isleworth">
+<meta property="og:description" content="Expert instructors, 94% pass rate, covering Twickenham, Isleworth & surrounding areas. From £38/hr.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://driveready.co.uk">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"DriveReady","telephone":"+442089771234","address":{"@type":"PostalAddress","streetAddress":"14 King Street","addressLocality":"Twickenham","postalCode":"TW1 3SN","addressCountry":"GB"},"areaServed":["Twickenham","Isleworth","Richmond","Feltham","Hounslow","Whitton","Hampton","St Margarets","Brentford"],"priceRange":"£38–£45","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"312"}}</script>
 
-<!-- Typography -->
+<!-- Typography: Geist (headings/UI) + Inter (body) + DM Serif Display (section subtitles) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -16,258 +21,1425 @@
 <style>
 /* ── DESIGN TOKENS ── */
 :root {
-  --ink: #060910; --ink2: #0c1322; --ink3: #111b2e; --ink4: #18253d;
-  --blue: #2563eb; --blue2: #3b82f6; --blue3: #93c5fd;
-  --gold: #f59e0b; --gold2: #fbbf24; --gold3: #fde68a;
-  --ok: #10b981; --err: #ef4444; --white: #ffffff;
-  --g1: rgba(255,255,255,.06); --g2: rgba(255,255,255,.11); --g3: rgba(255,255,255,.18);
-  --t1: rgba(255,255,255,.92); --t2: rgba(255,255,255,.65); --t3: rgba(255,255,255,.38);
-  --r: 16px; --rs: 10px;
-  --sh-gold: 0 8px 32px rgba(245,158,11,.35); --sh-blue: 0 8px 32px rgba(37,99,235,.35);
+  --ink:    #060910;
+  --ink2:   #0c1322;
+  --ink3:   #111b2e;
+  --ink4:   #18253d;
+  --blue:   #2563eb;
+  --blue2:  #3b82f6;
+  --blue3:  #93c5fd;
+  --gold:   #f59e0b;
+  --gold2:  #fbbf24;
+  --gold3:  #fde68a;
+  --ok:     #10b981;
+  --err:    #ef4444;
+  --white:  #ffffff;
+  --g1:     rgba(255,255,255,.06);
+  --g2:     rgba(255,255,255,.11);
+  --g3:     rgba(255,255,255,.18);
+  --t1:     rgba(255,255,255,.92);
+  --t2:     rgba(255,255,255,.65);
+  --t3:     rgba(255,255,255,.38);
+  --r:      16px;
+  --rs:     10px;
+  /* Shadows */
+  --sh-gold:  0 8px 32px rgba(245,158,11,.35);
+  --sh-blue:  0 8px 32px rgba(37,99,235,.35);
 }
 
 /* ── RESET ── */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
 html { scroll-behavior:smooth; font-size:16px }
 body {
-  font-family:'Inter', sans-serif; background: var(--ink); color: var(--white);
-  overflow-x: hidden; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--ink);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11','ss01';
 }
-h1,h2,h3,h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
-.sub { font-family: 'DM Serif Display', serif !important; font-style: italic; font-weight: 400 !important; }
+h1,h2,h3,h4,h5 {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+/* Section subtitles — elegant serif contrast */
+.sub {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-style: italic;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+}
 a { text-decoration:none; color:inherit }
+img { max-width:100%; display:block }
+button { font-family:inherit; cursor:pointer }
 
-/* ── NAV ── */
+/* ── PAGE FADE ── */
+#app { opacity:1; transition:opacity .2s ease }
+#app.fade { opacity:0 }
+
+/* ── SUBTLE GRAIN ── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9998; opacity:.5; mix-blend-mode:overlay;
+}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:1000;
-  padding:20px 52px; display:flex; align-items:center; justify-content:space-between;
+  padding:20px 52px;
+  display:flex; align-items:center; justify-content:space-between;
   transition:all .3s ease;
 }
-nav.sc { background:rgba(6,9,16,.88); backdrop-filter:blur(24px); border-bottom:1px solid rgba(255,255,255,.08); padding:14px 52px; }
-.logo { font-size:1.4rem; font-weight:800; letter-spacing:-.05em; cursor:pointer; }
+nav.sc {
+  background:rgba(6,9,16,.88);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:14px 52px;
+}
+.logo {
+  font-family:'Inter', sans-serif;
+  font-size:1.4rem; font-weight:800;
+  letter-spacing:-.05em; cursor:pointer;
+  color:#fff;
+}
 .logo em { font-style:normal; color:var(--gold) }
 .navl { display:flex; gap:28px; list-style:none; align-items:center }
-.navl a { font-size:.83rem; font-weight:500; color:var(--t2); cursor:pointer; }
-.btn-cta { background:var(--gold); color:var(--ink); padding:9px 22px; border-radius:8px; font-weight:700; box-shadow:var(--sh-gold); }
+.navl a {
+  font-size:.83rem; font-weight:500; color:var(--t2);
+  letter-spacing:.01em; transition:color .18s; cursor:pointer; position:relative;
+}
+.navl a::after {
+  content:''; position:absolute; bottom:-4px; left:0;
+  width:0; height:1.5px; background:var(--gold); transition:width .25s; border-radius:2px;
+}
+.navl a:hover { color:#fff }
+.navl a:hover::after { width:100% }
+.btn-cta {
+  background:var(--gold) !important;
+  color:var(--ink) !important;
+  padding:9px 22px; border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:700 !important; font-size:.82rem;
+  letter-spacing:.01em;
+  transition:all .22s; box-shadow:var(--sh-gold);
+}
+.btn-cta:hover { background:var(--gold2) !important; transform:translateY(-1px) }
+.btn-cta::after { display:none !important }
+.mob-btn { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px }
+.mob-btn span { display:block; width:22px; height:1.5px; background:#fff; border-radius:2px }
+.mob-nav {
+  position:fixed; inset:0; background:rgba(6,9,16,.97); backdrop-filter:blur(20px);
+  z-index:990; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:32px; opacity:0; pointer-events:none; transition:opacity .28s;
+}
+.mob-nav.open { opacity:1; pointer-events:all }
+.mob-nav a {
+  font-family:'Inter',sans-serif; font-size:1.5rem; font-weight:700;
+  color:var(--t2); cursor:pointer; transition:color .18s;
+}
+.mob-nav a:hover { color:var(--gold) }
 
-/* ── LAYOUT HELPERS ── */
+/* ══════════════════════════════
+   BUTTONS
+══════════════════════════════ */
+.b-gold {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--gold); color:var(--ink);
+  padding:13px 28px; border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:700; font-size:.88rem; letter-spacing:.01em;
+  border:none; transition:all .22s; cursor:pointer; text-decoration:none;
+  box-shadow:var(--sh-gold);
+}
+.b-gold:hover { background:var(--gold2); transform:translateY(-2px); box-shadow:0 12px 40px rgba(245,158,11,.5) }
+.b-blue {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--blue); color:#fff;
+  padding:13px 28px; border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:700; font-size:.88rem; letter-spacing:.01em;
+  border:none; transition:all .22s; cursor:pointer; text-decoration:none;
+  box-shadow:var(--sh-blue);
+}
+.b-blue:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 12px 40px rgba(37,99,235,.5) }
+.b-ghost {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--g1); color:#fff;
+  padding:13px 28px; border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:600; font-size:.88rem;
+  border:1px solid var(--g2); backdrop-filter:blur(10px);
+  transition:all .22s; cursor:pointer; text-decoration:none;
+}
+.b-ghost:hover { background:var(--g2); border-color:var(--g3); transform:translateY(-1px) }
+.b-outline {
+  display:inline-flex; align-items:center; gap:8px;
+  background:transparent; color:var(--gold);
+  padding:12px 26px; border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:600; font-size:.85rem;
+  border:1px solid rgba(245,158,11,.35);
+  transition:all .22s; cursor:pointer; text-decoration:none;
+}
+.b-outline:hover { background:rgba(245,158,11,.08); border-color:var(--gold) }
+
+/* ══════════════════════════════
+   LAYOUT HELPERS
+══════════════════════════════ */
 .sec { padding:88px 0 }
 .inn { max-width:1160px; margin:0 auto; padding:0 48px }
-.lbl { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
-.ttl { font-size:clamp(1.9rem,3.8vw,3rem); font-weight:800; margin-bottom:14px; }
+.lbl {
+  font-size:.68rem; font-weight:700; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+  font-family:'Inter',sans-serif;
+}
+.ttl { font-size:clamp(1.9rem,3.8vw,3rem); font-weight:800; margin-bottom:14px; letter-spacing:-.03em }
+.sub { color:var(--t2); font-size:1.05rem; max-width:520px; line-height:1.72 }
 .hdr { margin-bottom:52px }
 
-/* ── REVEAL ANIMATIONS ── */
-.rv { opacity:0; transform:translateY(24px); transition: .58s ease; }
-.rv.on { opacity:1; transform:none }
+/* ══════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════ */
+.rv  { opacity:0; transform:translateY(24px); transition:opacity .58s ease, transform .58s ease }
+.rvl { opacity:0; transform:translateX(-24px); transition:opacity .58s ease, transform .58s ease }
+.rvr { opacity:0; transform:translateX(24px);  transition:opacity .58s ease, transform .58s ease }
+.rv.on,.rvl.on,.rvr.on { opacity:1; transform:none }
 
-/* ── THE FIX: UNIFORM GRID HEIGHTS ── */
-.fgrid { 
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; 
-  align-items: stretch; /* Stretch container */
+/* ══════════════════════════════
+   IMAGE COMPONENT
+══════════════════════════════ */
+.img-wrap {
+  position:relative; overflow:hidden;
+  border-radius:var(--r);
+  background:var(--ink3);
 }
-.fcard {
-  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
-  border-radius:var(--r); padding:30px 24px;
-  display: flex; flex-direction: column; /* Allow content to grow */
-  height: 100%; transition:all .28s;
+.img-wrap img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .55s ease;
 }
-.fcard:hover { transform:translateY(-4px); border-color:var(--gold); }
-.ficon { width:44px; height:44px; background:rgba(37,99,235,.15); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:15px; }
-.fcard h3 { font-size:.97rem; font-weight:700; margin-bottom:10px; }
-.fcard p { font-size:.83rem; color:var(--t2); flex-grow: 1; } /* Fills the space */
+.img-wrap:hover img { transform:scale(1.04) }
+.img-wrap .img-skeleton {
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, var(--ink3) 25%, var(--ink4) 50%, var(--ink3) 75%);
+  background-size:200% 100%;
+  animation:skel 1.4s ease-in-out infinite;
+}
+@keyframes skel { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.img-wrap img.loaded + .img-skeleton,
+.img-wrap img.loaded ~ .img-skeleton { display:none }
+.img-caption {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:28px 16px 12px;
+  background:linear-gradient(to top, rgba(6,9,16,.72) 0%, transparent 100%);
+  font-size:.7rem; color:rgba(255,255,255,.6); font-weight:500;
+  letter-spacing:.04em;
+}
 
-/* ── THE FIX: UNIFORM PACKAGE CARDS ── */
-.ogrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items: stretch; }
-.ocard {
-  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
-  border-radius:var(--r); padding:28px 24px;
-  display: flex; flex-direction: column; height: 100%; transition:all .28s; cursor:pointer;
-}
-.ocard:hover { transform:translateY(-5px); border-color:var(--gold); }
-.ocard-icon { font-size:1.4rem; margin-bottom:16px; }
-.obody { flex-grow: 1; display: flex; flex-direction: column; }
-.odesc { font-size:.85rem; color:var(--t3); margin-bottom:18px; flex-grow: 1; } /* Pushes price to bottom */
-.oprice { font-size:1.75rem; font-weight:800; color:var(--gold); }
-
-/* ── HERO ── */
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
 .hero { min-height:100vh; position:relative; display:flex; align-items:center; overflow:hidden }
 .hero-bg { position:absolute; inset:0; z-index:0 }
-.hero-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(.28); }
-.hero-grad { position:absolute; inset:0; background:linear-gradient(115deg, rgba(6,9,16,.96) 0%, rgba(6,9,16,.72) 52%, transparent 100%) }
-.hero-c { position:relative; z-index:2; width:100%; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 35%; filter:brightness(.28) saturate(1.1) }
+.hero-grad { position:absolute; inset:0; background:linear-gradient(115deg, rgba(6,9,16,.96) 0%, rgba(6,9,16,.72) 52%, rgba(37,99,235,.08) 100%) }
+.orb { position:absolute; border-radius:50%; filter:blur(110px); pointer-events:none; animation:orf 9s ease-in-out infinite }
+.o1 { width:620px; height:620px; background:rgba(37,99,235,.16); top:-140px; right:-100px }
+.o2 { width:420px; height:420px; background:rgba(245,158,11,.1); bottom:80px; left:-60px; animation-delay:-4s }
+.o3 { width:260px; height:260px; background:rgba(16,185,129,.07); bottom:20%; right:26%; animation-delay:-7s }
+@keyframes orf { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-26px) scale(1.05)} }
 
-/* ── SHARED COMPONENTS ── */
-.cstrip { background:var(--blue); padding:15px; text-align:center; font-weight:600; font-size:.88rem; }
-.tbar { background:rgba(12,19,34,.6); border-y:1px solid rgba(255,255,255,.07); padding:20px; }
-.tinn { max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-.ti { font-size:.8rem; color:var(--t2); }
-#map { height:430px; border-radius:var(--r); margin-top:40px; border:1px solid rgba(255,255,255,.1); }
+.hero-c { position:relative; z-index:2; max-width:1160px; margin:0 auto; padding:128px 48px 88px; width:100% }
 
-/* ── MODAL ── */
-.mover { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(10px); z-index:2000; display:none; align-items:center; justify-content:center; padding:20px; }
-.mover.open { display:flex; }
-.modal { background:#0d1526; border-radius:18px; max-width:500px; width:100%; padding:30px; position:relative; }
-.mclose { position:absolute; top:15px; right:15px; cursor:pointer; }
-.fg { margin-bottom:15px; }
-.fg label { display:block; font-size:.7rem; color:var(--blue3); margin-bottom:5px; text-transform:uppercase; font-weight:700; }
-.fg input { width:100%; padding:12px; background:var(--g1); border:1px solid #333; color:#fff; border-radius:8px; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(37,99,235,.14); border:1px solid rgba(59,130,246,.3);
+  backdrop-filter:blur(8px); padding:6px 16px; border-radius:6px;
+  font-size:.74rem; font-weight:600; color:var(--blue3); letter-spacing:.05em;
+  text-transform:uppercase; margin-bottom:24px;
+  animation:fup .6s ease both;
+}
+.bdot { width:6px; height:6px; border-radius:50%; background:var(--blue3); animation:bp 2s infinite }
+@keyframes bp { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.65)} }
 
-@media(max-width:768px){ .fgrid { grid-template-columns:1fr; } .navl { display:none; } .inn { padding:0 24px; } }
+.hero h1 {
+  font-size:clamp(2.6rem,6vw,5.4rem);
+  font-weight:800; line-height:1.04; margin-bottom:20px;
+  letter-spacing:-.04em;
+  animation:fup .6s .07s ease both;
+}
+.hero h1 .gy { color:var(--gold) }
+.hero h1 .gb { color:var(--blue3) }
+
+.hero-p {
+  font-size:1.05rem; color:var(--t2); max-width:480px;
+  font-weight:400; margin-bottom:36px; line-height:1.8;
+  animation:fup .6s .14s ease both;
+}
+.hero-acts { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:56px; animation:fup .6s .21s ease both }
+.hero-stats { display:flex; gap:36px; flex-wrap:wrap; animation:fup .6s .28s ease both }
+.sn { font-family:'Inter',sans-serif; font-size:1.85rem; font-weight:800; color:var(--gold); line-height:1 }
+.sl { font-size:.75rem; color:var(--t3); margin-top:2px; font-weight:400 }
+@keyframes fup { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+
+/* ══════════════════════════════
+   CALL STRIP
+══════════════════════════════ */
+.cstrip {
+  background:linear-gradient(90deg, var(--blue) 0%, #1d4ed8 100%);
+  padding:15px 48px;
+  display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;
+}
+.cstrip p { color:#fff; font-weight:600; font-size:.88rem; font-family:'Inter',sans-serif }
+.cstrip a {
+  background:#fff; color:var(--blue); padding:8px 22px; border-radius:6px;
+  font-family:'Inter',sans-serif; font-weight:700; font-size:.83rem;
+  transition:all .18s;
+}
+.cstrip a:hover { background:var(--gold3); color:var(--ink); transform:scale(1.03) }
+
+/* ══════════════════════════════
+   TRUST BAR
+══════════════════════════════ */
+.tbar {
+  background:rgba(12,19,34,.6);
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  padding:20px 48px;
+}
+.tinn { max-width:1160px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap }
+.ti { display:flex; align-items:center; gap:7px; font-size:.8rem; color:var(--t2); font-weight:400 }
+.ti strong { color:var(--blue3); font-weight:600 }
+
+
+
+/* ══════════════════════════════
+   FEATURES GRID
+══════════════════════════════ */
+.fgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; grid-auto-rows:1fr }
+.fcard {
+  background:var(--ink3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r); padding:30px 24px;
+  transition:all .28s; position:relative; overflow:hidden;
+  display:flex; flex-direction:column; height:100%;
+}
+.fcard::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  opacity:0; transition:opacity .28s;
+}
+.fcard:hover { transform:translateY(-4px); border-color:rgba(255,255,255,.13); box-shadow:0 14px 44px rgba(0,0,0,.28) }
+.fcard:hover::before { opacity:1 }
+.ficon {
+  width:44px; height:44px;
+  background:rgba(37,99,235,.15); border:1px solid rgba(37,99,235,.25);
+  border-radius:10px; display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; margin-bottom:15px; flex-shrink:0;
+}
+.fcard h3 { font-size:.97rem; font-weight:700; margin-bottom:7px; letter-spacing:-.02em }
+.fcard p { font-size:.83rem; color:var(--t2); line-height:1.72; flex:1 }
+
+/* ══════════════════════════════
+   INSTRUCTOR SPLIT — branded car
+══════════════════════════════ */
+.split { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center }
+.simgs {
+  position:relative; height:460px;
+  display:flex; align-items:center; justify-content:center;
+}
+.car-showcase {
+  width:100%; height:100%;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--ink3) 0%, var(--ink2) 100%);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+}
+.car-showcase::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 60%, rgba(37,99,235,.12) 0%, transparent 70%);
+}
+.car-showcase::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(245,158,11,.4), transparent);
+}
+.car-svg-wrap { position:relative; z-index:2; width:100%; padding:40px 32px 24px; }
+.car-brand-badge {
+  position:absolute; top:24px; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:10px;
+  background:rgba(6,9,16,.8); backdrop-filter:blur(12px);
+  border:1px solid rgba(245,158,11,.3);
+  border-radius:8px; padding:8px 18px; z-index:3;
+}
+.car-brand-badge .brand-logo-sm { display:flex; align-items:center; gap:7px }
+.car-brand-badge span { font-family:'Inter',sans-serif; font-size:.78rem; font-weight:700; color:#fff; letter-spacing:-.02em }
+.car-brand-badge em { color:var(--gold); font-style:normal }
+.car-stats-row {
+  position:absolute; bottom:20px; left:0; right:0;
+  display:flex; justify-content:center; gap:32px; z-index:3;
+}
+.car-stat { text-align:center }
+.car-stat-n { font-family:'Inter',sans-serif; font-size:1.3rem; font-weight:800; color:var(--gold) }
+.car-stat-l { font-size:.66rem; color:var(--t3); letter-spacing:.04em; text-transform:uppercase; margin-top:1px }
+.sbadge {
+  position:absolute; top:24px; right:24px;
+  background:rgba(12,19,34,.9); backdrop-filter:blur(16px);
+  border:1px solid rgba(37,99,235,.25); border-radius:10px; padding:12px 18px; z-index:4;
+}
+.sbn { font-family:'Inter',sans-serif; font-size:1.5rem; font-weight:800; color:var(--gold) }
+.sbt { font-size:.62rem; color:var(--t3); font-weight:600; letter-spacing:.08em; text-transform:uppercase }
+.cklist { list-style:none; margin-top:22px; display:flex; flex-direction:column; gap:10px }
+.cklist li { display:flex; align-items:flex-start; gap:10px; font-size:.87rem; color:var(--t2) }
+.ck {
+  width:19px; height:19px; border-radius:50%;
+  background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.6rem; color:var(--gold); flex-shrink:0; margin-top:3px;
+}
+
+/* ══════════════════════════════
+   BG PHOTO SECTIONS
+══════════════════════════════ */
+.bgsec { position:relative; overflow:hidden }
+.bgsec .bgimg {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:0;
+  filter:brightness(.15) saturate(1.1);
+}
+.bgsec .bgov {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(6,9,16,.97), rgba(12,19,34,.94), rgba(6,9,16,.97));
+  z-index:1;
+}
+.bgsec .inn, .bgsec .sec { position:relative; z-index:2 }
+
+/* ══════════════════════════════
+   OFFER CARDS — no images, clean text layout
+══════════════════════════════ */
+.ogrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px }
+.ocard {
+  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r); overflow:hidden;
+  transition:all .28s; cursor:pointer; position:relative;
+  padding:28px 24px 24px;
+  display:flex; flex-direction:column;
+}
+.ocard:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(0,0,0,.3); border-color:rgba(255,255,255,.13) }
+.ocard.hot { border-color:rgba(245,158,11,.38); box-shadow:0 0 0 1px rgba(245,158,11,.12) }
+.ocard::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  opacity:0; transition:opacity .28s;
+}
+.ocard:hover::before { opacity:1 }
+.hot-badge {
+  position:absolute; top:14px; right:14px; z-index:2;
+  background:var(--gold); color:var(--ink);
+  font-family:'Inter',sans-serif; font-size:.62rem; font-weight:700;
+  padding:3px 9px; border-radius:4px; letter-spacing:.04em;
+}
+.ocard-icon {
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(37,99,235,.14); border:1px solid rgba(37,99,235,.22);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:16px; flex-shrink:0;
+}
+.otype { font-size:.64rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--blue3); margin-bottom:5px }
+.obody h3 { font-size:1.02rem; font-weight:700; margin-bottom:5px; letter-spacing:-.025em }
+.odesc { font-size:.8rem; color:var(--t3); margin-bottom:18px; line-height:1.62; flex:1 }
+.oprice { font-family:'Inter',sans-serif; font-size:1.75rem; font-weight:800; color:var(--gold); letter-spacing:-.03em }
+.oprice small { font-size:.74rem; color:var(--t3); font-family:'Inter',sans-serif; font-weight:400; margin-left:3px; letter-spacing:0 }
+.octa { display:flex; align-items:center; justify-content:space-between; margin-top:14px }
+.octa span:first-child { font-size:.74rem; color:var(--blue3); font-weight:600 }
+
+/* ══════════════════════════════
+   AREAS
+══════════════════════════════ */
+.agrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(138px,1fr)); gap:10px; margin-top:32px }
+.achip {
+  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--rs); padding:12px 15px;
+  display:flex; align-items:center; gap:8px;
+  font-size:.84rem; font-weight:500; transition:all .2s;
+}
+.achip:hover { background:var(--ink4); border-color:rgba(59,130,246,.3); transform:translateY(-2px) }
+.adot { width:6px; height:6px; border-radius:50%; background:var(--blue2); flex-shrink:0; box-shadow:0 0 7px rgba(59,130,246,.7) }
+#map { height:430px; border-radius:var(--r); border:1px solid rgba(255,255,255,.08); margin-top:40px; overflow:hidden }
+
+/* ══════════════════════════════
+   TESTIMONIALS
+══════════════════════════════ */
+.tgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(278px,1fr)); gap:16px }
+.tcard {
+  background:var(--ink3); border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r); padding:26px 22px;
+  transition:all .28s; position:relative;
+}
+.tcard:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(0,0,0,.25); border-color:rgba(255,255,255,.12) }
+.tstars { color:var(--gold); font-size:.84rem; letter-spacing:.15em; margin-bottom:10px }
+.ttxt { font-size:.86rem; color:var(--t2); line-height:1.77; margin-bottom:18px; font-style:italic }
+.ttxt::before { content:'\201C'; color:var(--gold); font-size:1.3rem; line-height:0; vertical-align:-.3em; margin-right:2px; font-style:normal }
+.tauth { display:flex; align-items:center; gap:10px }
+.tav { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--blue),#1e3a8a); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-weight:700; font-size:.88rem; flex-shrink:0 }
+.tname { font-family:'Inter',sans-serif; font-weight:700; font-size:.86rem; letter-spacing:-.01em }
+.tdet { font-size:.72rem; color:var(--t3); margin-top:1px }
+.tplat { position:absolute; top:18px; right:18px; font-size:.63rem; color:var(--t3); background:var(--g1); padding:3px 8px; border-radius:4px; border:1px solid rgba(255,255,255,.07) }
+
+/* ══════════════════════════════
+   FAQ
+══════════════════════════════ */
+.fwrap { max-width:780px; margin:0 auto }
+.fi { border:1px solid rgba(255,255,255,.07); border-radius:var(--rs); margin-bottom:8px; overflow:hidden; transition:border-color .25s }
+.fi.open { border-color:rgba(245,158,11,.35) }
+.fq { padding:18px 22px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; background:var(--ink3); gap:12px }
+.fq:hover { background:var(--ink4) }
+.fq h4 { font-size:.9rem; font-weight:600; line-height:1.4; letter-spacing:-.01em }
+.fchev { width:24px; height:24px; background:var(--g1); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.6rem; transition:all .28s; color:var(--gold); flex-shrink:0 }
+.fi.open .fchev { transform:rotate(180deg); background:rgba(245,158,11,.12) }
+.fa { max-height:0; overflow:hidden; transition:max-height .36s ease; background:rgba(6,9,16,.4) }
+.fa-in { padding:0 22px 18px; font-size:.85rem; color:var(--t2); line-height:1.82 }
+.fi.open .fa { max-height:280px }
+
+/* ══════════════════════════════
+   CTA BANNER
+══════════════════════════════ */
+.ctab {
+  background:linear-gradient(135deg, rgba(37,99,235,.15), rgba(12,19,34,.8), rgba(245,158,11,.08));
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px); border-radius:20px;
+  padding:64px 52px; text-align:center; position:relative; overflow:hidden;
+}
+.ctab::before {
+  content:''; position:absolute; top:-50px; left:50%; transform:translateX(-50%);
+  width:420px; height:220px;
+  background:radial-gradient(ellipse, rgba(37,99,235,.13), transparent 70%);
+  pointer-events:none;
+}
+.ctab h2 { font-size:clamp(1.7rem,3.2vw,2.6rem); font-weight:800; margin-bottom:12px; letter-spacing:-.03em }
+.ctab p { color:var(--t2); font-size:.95rem; margin-bottom:28px }
+.ctab-acts { display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer { background:rgba(3,4,9,.98); border-top:1px solid rgba(255,255,255,.06); padding:56px 48px 24px }
+.fgrid { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:44px }
+.fbrand .logo { font-size:1.4rem; margin-bottom:12px; display:flex; align-items:center; gap:8px }
+.fbrand p { font-size:.82rem; color:var(--t3); line-height:1.78; max-width:245px; margin-bottom:16px }
+.fdvsa { display:inline-flex; align-items:center; gap:6px; background:rgba(37,99,235,.09); border:1px solid rgba(37,99,235,.2); padding:6px 12px; border-radius:6px; font-size:.71rem; color:var(--blue3); font-weight:600; letter-spacing:.03em }
+.fcol h4 { font-family:'Inter',sans-serif; font-size:.84rem; font-weight:700; margin-bottom:15px; letter-spacing:-.01em }
+.fcol ul { list-style:none }
+.fcol ul li { margin-bottom:8px }
+.fcol ul li a { font-size:.81rem; color:var(--t3); transition:color .18s; cursor:pointer }
+.fcol ul li a:hover { color:var(--gold) }
+.fbot { max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid rgba(255,255,255,.05); flex-wrap:wrap; gap:10px }
+.fbot p { font-size:.76rem; color:var(--t3) }
+.fleg { display:flex; gap:18px }
+.fleg a { font-size:.76rem; color:var(--t3); transition:color .18s; cursor:pointer }
+.fleg a:hover { color:var(--gold) }
+
+/* ══════════════════════════════
+   STICKY CALL
+══════════════════════════════ */
+.scall { position:fixed; bottom:24px; right:24px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:8px }
+.slbl { background:rgba(6,9,16,.92); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(10px); padding:6px 11px; border-radius:6px; font-size:.7rem; color:var(--t2); white-space:nowrap; opacity:0; transform:translateX(6px); transition:all .25s; pointer-events:none }
+.scall:hover .slbl { opacity:1; transform:translateX(0) }
+.sbtn { width:54px; height:54px; background:var(--blue); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; box-shadow:var(--sh-blue); transition:all .25s; text-decoration:none; animation:wig 3s 8s ease-in-out infinite }
+.sbtn:hover { transform:scale(1.1); box-shadow:0 10px 36px rgba(37,99,235,.65) }
+@keyframes wig { 0%,100%{transform:rotate(0)} 12%{transform:rotate(-12deg)} 25%{transform:rotate(12deg)} 37%{transform:rotate(-7deg)} 50%{transform:rotate(7deg)} 62%{transform:rotate(0)} }
+
+/* ══════════════════════════════
+   OFFER PAGE
+══════════════════════════════ */
+.ophero { min-height:74vh; position:relative; display:flex; align-items:flex-end; overflow:hidden }
+.ophbg { position:absolute; inset:0; z-index:0 }
+.ophbg img { width:100%; height:100%; object-fit:cover; filter:brightness(.22) saturate(1.1) }
+.ophgrad { position:absolute; inset:0; background:linear-gradient(to top, rgba(6,9,16,1) 0%, rgba(6,9,16,.55) 50%, rgba(6,9,16,.12) 100%) }
+.ophc { position:relative; z-index:2; width:100%; max-width:1160px; margin:0 auto; padding:0 48px 64px }
+.breadc { display:flex; align-items:center; gap:6px; font-size:.74rem; color:var(--t3); margin-bottom:22px }
+.breadc span { cursor:pointer; transition:color .18s }
+.breadc span:hover { color:var(--gold) }
+.breadc .sep { color:var(--t3) }
+.ophprice { margin-top:22px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap }
+.p-big { font-family:'Inter',sans-serif; font-size:2.8rem; font-weight:800; color:var(--gold); line-height:1; letter-spacing:-.04em }
+.p-note { font-size:.88rem; color:var(--t2) }
+.p-save { background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.28); color:var(--gold2); font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:4px; margin-left:4px; font-family:'Inter',sans-serif }
+.opdet { display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start; margin-top:56px }
+.opmain h2 { font-size:1.35rem; font-weight:700; margin-bottom:11px; margin-top:34px; letter-spacing:-.02em }
+.opmain h2:first-of-type { margin-top:0 }
+.opmain p { font-size:.9rem; color:var(--t2); line-height:1.84; margin-bottom:13px }
+.incl { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:20px }
+.incl li { display:flex; align-items:flex-start; gap:9px; font-size:.87rem; color:var(--t2) }
+.incl li::before { content:'✓'; color:var(--gold); font-weight:700; font-size:.8rem; flex-shrink:0; margin-top:2px }
+.opsb { position:sticky; top:92px }
+.opsc { background:var(--ink3); border:1px solid rgba(255,255,255,.08); border-radius:var(--r); padding:24px; }
+.opsc .p-big { font-size:2.2rem }
+.opsc .p-note { font-size:.78rem; color:var(--t3); display:block; margin-bottom:16px; margin-top:3px }
+.opsc .b-gold,.opsc .b-outline { display:flex; justify-content:center; width:100%; margin-bottom:8px }
+.sbfacts { margin-top:16px; display:flex; flex-direction:column; gap:8px }
+.sbf { display:flex; align-items:center; gap:8px; font-size:.79rem; color:var(--t2); padding:8px 11px; background:var(--g1); border-radius:7px; border:1px solid rgba(255,255,255,.06) }
+.opg { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:32px }
+.opg .img-wrap { height:165px }
+.rrgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:16px; margin-top:24px }
+
+/* ══════════════════════════════
+   MODAL — LEAD QUALIFIER
+══════════════════════════════ */
+.mover { position:fixed; inset:0; background:rgba(0,0,0,.75); backdrop-filter:blur(12px); z-index:2000; display:flex; align-items:center; justify-content:center; padding:18px; opacity:0; pointer-events:none; transition:opacity .28s }
+.mover.open { opacity:1; pointer-events:all }
+.modal { background:#0d1526; border:1px solid rgba(255,255,255,.09); border-radius:18px; max-width:560px; width:100%; max-height:90vh; overflow:hidden; display:flex; flex-direction:column; transform:translateY(22px) scale(.96); transition:all .3s cubic-bezier(.34,1.56,.64,1) }
+.mover.open .modal { transform:none }
+.mclose { position:absolute; top:14px; right:14px; width:30px; height:30px; background:var(--g1); border:1px solid rgba(255,255,255,.1); border-radius:50%; color:#fff; font-size:.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-family:inherit; transition:background .18s }
+.mclose:hover { background:var(--g2) }
+.mhdr { background:linear-gradient(135deg, rgba(37,99,235,.2), rgba(12,19,34,.9)); padding:24px 28px 20px; border-bottom:1px solid rgba(255,255,255,.07); flex-shrink:0; position:relative }
+.prow { display:flex; align-items:center; margin-bottom:16px }
+.pdot { width:26px; height:26px; border-radius:50%; border:1.5px solid rgba(255,255,255,.15); background:var(--ink3); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:.66rem; font-weight:700; color:var(--t3); transition:all .3s; flex-shrink:0 }
+.pdot.act { border-color:var(--blue2); background:var(--blue); color:#fff; box-shadow:0 0 12px rgba(59,130,246,.45) }
+.pdot.done { border-color:var(--ok); background:var(--ok); color:#fff }
+.pline { flex:1; height:1.5px; background:rgba(255,255,255,.1); transition:background .3s }
+.pline.done { background:var(--ok) }
+.plbls { display:flex; justify-content:space-between; margin-top:4px }
+.plbl { font-size:.58rem; color:var(--t3); text-align:center; width:26px; transition:color .25s; font-weight:500; letter-spacing:.03em }
+.plbl.act { color:var(--blue3) }
+.plbl.done { color:var(--ok) }
+.mhdr h3 { font-size:1.15rem; font-weight:700; margin-bottom:3px; letter-spacing:-.025em; font-family:'Inter',sans-serif }
+.mhsub { font-size:.78rem; color:var(--t3) }
+.mpkg { display:inline-flex; align-items:center; gap:7px; background:rgba(245,158,11,.08); border:1px solid rgba(245,158,11,.22); border-radius:6px; padding:5px 12px 5px 7px; margin-top:10px }
+.mpkgi { font-size:1.1rem }
+.mpkgn { font-family:'Inter',sans-serif; font-size:.76rem; font-weight:700; color:var(--gold) }
+.mbody { padding:24px 28px; overflow-y:auto; flex:1 }
+.sp { display:none }
+.sp.act { display:block }
+.fg { margin-bottom:15px }
+.fg label { display:block; font-size:.7rem; font-weight:600; color:var(--blue3); margin-bottom:6px; letter-spacing:.08em; text-transform:uppercase }
+.fg input, .fg select, .fg textarea { width:100%; padding:11px 14px; background:var(--g1); border:1px solid rgba(255,255,255,.1); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:.87rem; transition:border-color .18s,box-shadow .18s; outline:none; resize:none }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--blue2); box-shadow:0 0 0 3px rgba(59,130,246,.1) }
+.fg select option { background:#0d1526 }
+.fg textarea { min-height:88px; line-height:1.65 }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:12px }
+.rpills { display:flex; gap:8px; flex-wrap:wrap; margin-top:2px }
+.rp { padding:8px 14px; background:var(--g1); border:1px solid rgba(255,255,255,.09); border-radius:6px; cursor:pointer; font-size:.79rem; color:var(--t2); transition:all .18s; user-select:none; font-weight:500 }
+.rp:hover { background:rgba(37,99,235,.1); border-color:rgba(59,130,246,.3); color:#fff }
+.rp.sel { background:rgba(37,99,235,.18); border-color:var(--blue2); color:#fff }
+.cgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:2px }
+.cgrid.g3 { grid-template-columns:1fr 1fr 1fr }
+.cc { padding:10px 12px; background:var(--g1); border:1px solid rgba(255,255,255,.09); border-radius:8px; cursor:pointer; transition:all .18s; display:flex; align-items:center; gap:8px; font-size:.79rem; color:var(--t2); user-select:none; font-weight:500 }
+.cc:hover { background:rgba(37,99,235,.1); border-color:rgba(59,130,246,.3) }
+.cc.sel { background:rgba(37,99,235,.18); border-color:var(--blue2); color:#fff }
+.drev { overflow:hidden; max-height:0; opacity:0; transition:max-height .3s,opacity .3s }
+.drev.show { max-height:85px; opacity:1 }
+.sumg { display:flex; flex-direction:column; gap:8px }
+.sumr { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:9px 12px; background:var(--g1); border:1px solid rgba(255,255,255,.07); border-radius:8px }
+.suml { font-size:.68rem; color:var(--t3); font-weight:600; text-transform:uppercase; letter-spacing:.06em; flex-shrink:0 }
+.sumv { font-size:.82rem; color:var(--t2); text-align:right; line-height:1.5 }
+.sumv.hi { color:var(--gold); font-weight:700; font-family:'Inter',sans-serif }
+.mftr { padding:14px 28px 20px; border-top:1px solid rgba(255,255,255,.07); display:flex; justify-content:space-between; align-items:center; gap:10px; background:rgba(6,9,16,.5); flex-shrink:0 }
+.mbk { display:flex; align-items:center; gap:5px; padding:9px 18px; background:transparent; border:1px solid rgba(255,255,255,.1); border-radius:7px; color:var(--t3); font-family:'Inter',sans-serif; font-weight:600; font-size:.79rem; cursor:pointer; transition:all .18s }
+.mbk:hover { border-color:rgba(255,255,255,.22); color:#fff }
+.mnext { display:flex; align-items:center; gap:6px; padding:10px 22px; background:var(--blue); border:none; border-radius:7px; color:#fff; font-family:'Inter',sans-serif; font-weight:700; font-size:.84rem; cursor:pointer; transition:all .18s; box-shadow:var(--sh-blue) }
+.mnext:hover { transform:translateY(-1px); background:#1d4ed8 }
+.msub { display:flex; align-items:center; gap:6px; padding:10px 22px; background:var(--ok); border:none; border-radius:7px; color:#fff; font-family:'Inter',sans-serif; font-weight:700; font-size:.84rem; cursor:pointer; transition:all .18s }
+.msub:hover { transform:translateY(-1px); background:#059669 }
+.merr { color:var(--err); font-size:.74rem; font-weight:600; text-align:center; margin-bottom:8px; min-height:16px }
+.succ { text-align:center; padding:12px 8px }
+.scc { width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,var(--ok),#059669); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 15px; box-shadow:0 0 28px rgba(16,185,129,.32); animation:pop .4s cubic-bezier(.34,1.56,.64,1) both }
+@keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+.succ h3 { font-size:1.4rem; font-weight:800; margin-bottom:6px; letter-spacing:-.025em; font-family:'Inter',sans-serif }
+.succ p { color:var(--t2); font-size:.85rem; line-height:1.72; max-width:320px; margin:0 auto 16px }
+.cbox { background:rgba(37,99,235,.08); border:1px solid rgba(37,99,235,.2); border-radius:8px; padding:14px }
+.cbox p { font-size:.76rem; color:var(--t3); margin-bottom:2px }
+.cbox strong { font-family:'Inter',sans-serif; font-size:1rem; color:var(--blue3); font-weight:700 }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media(max-width:1024px){
+  .split{grid-template-columns:1fr} .simgs{height:340px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .opdet{grid-template-columns:1fr} .opsb{position:static}
+  .opg{grid-template-columns:1fr 1fr}
+  .fgrid.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:14px 20px} nav.sc{padding:10px 20px}
+  .navl{display:none} .mob-btn{display:flex}
+  .hero-c{padding:96px 20px 56px}
+  .inn{padding:0 20px}
+  .sec{padding:64px 0}
+  .cstrip,.tbar{padding:14px 20px}
+  .fgrid{grid-template-columns:1fr;gap:14px}
+  footer{padding:44px 20px 22px}
+  .fbot{flex-direction:column;text-align:center}
+  .ctab{padding:44px 22px}
+  .ophc{padding:0 20px 48px}
+  .opg{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .cgrid,.cgrid.g3{grid-template-columns:1fr 1fr}
+  .mbody{padding:18px 20px}
+  .mhdr{padding:20px 20px 16px}
+  .mftr{padding:12px 20px 18px}
+}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <div class="logo" onclick="location.reload()">Drive<em>Ready</em></div>
-  <ul class="navl">
-    <li><a href="#why">About</a></li>
-    <li><a href="#off">Pricing</a></li>
-    <li><a href="#map-sec">Areas</a></li>
-    <li><a onclick="oM('Enquiry','','🚗')" class="btn-cta">Book Lesson</a></li>
-  </ul>
-</nav>
-
-<div id="app">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600" alt="Hero"></div>
-    <div class="hero-grad"></div>
-    <div class="inn hero-c">
-      <div class="lbl" style="color:var(--blue3)">DVSA-Approved School</div>
-      <h1 style="font-size:clamp(2.5rem, 6vw, 4.5rem); margin-bottom:20px;">Drive with <span style="color:var(--gold)">Confidence.</span></h1>
-      <p style="max-width:500px; color:var(--t2); margin-bottom:35px;">Premium driving lessons in Twickenham & Isleworth. 94% first-time pass rate with expert ADI instructors.</p>
-      <div style="display:flex; gap:15px; flex-wrap:wrap;">
-        <a href="#off" class="btn-cta" style="padding:15px 30px;">View Packages</a>
-        <a href="tel:02089771234" style="border:1px solid var(--t3); padding:15px 30px; border-radius:8px; font-weight:700;">📞 020 8977 1234</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="cstrip">📞 Call 020 8977 1234 to speak with an instructor today</div>
-
-  <div class="tbar">
-    <div class="tinn">
-      <div class="ti">⭐ 4.9/5 Google Reviews</div>
-      <div class="ti">🏆 DVSA Approved</div>
-      <div class="ti">📍 Isleworth Specialist</div>
-      <div class="ti">🚗 Manual & Auto</div>
-    </div>
-  </div>
-
-  <!-- WHY SECTION -->
-  <section class="sec" id="why" style="background:var(--ink2)">
-    <div class="inn">
-      <div class="hdr rv">
-        <div class="lbl">Why DriveReady</div>
-        <h2 class="ttl">The better way to learn</h2>
-        <p class="sub" style="color:var(--t2)">We don't just teach you to pass; we teach you to drive for life.</p>
-      </div>
-      <div class="fgrid">
-        <div class="fcard rv">
-          <div class="ficon">🎯</div>
-          <h3>Structured Learning</h3>
-          <p>Every lesson follows a DVSA-aligned curriculum. You’ll track your progress in real-time and know exactly what you need to work on next.</p>
-        </div>
-        <div class="fcard rv">
-          <div class="ficon">🚗</div>
-          <h3>Modern Fleet</h3>
-          <p>Learn in clean, modern, dual-controlled cars. Whether you prefer Manual or Automatic, our vehicles are the perfect environment to learn.</p>
-        </div>
-        <div class="fcard rv">
-          <div class="ficon">📍</div>
-          <h3>Local Expertise</h3>
-          <p>We specialize in the Isleworth Test Centre. We know every roundabout, junction, and common hazard on the official exam routes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OFFERS -->
-  <section class="sec" id="off">
-    <div class="inn">
-      <div class="hdr rv">
-        <div class="lbl">Our Packages</div>
-        <h2 class="ttl">Affordable Excellence</h2>
-      </div>
-      <div class="ogrid">
-        <div class="ocard rv" onclick="oM('Manual Lesson','£38/hr','🚗')">
-          <div class="ocard-icon">🚗</div>
-          <h3>Manual Driving</h3>
-          <p class="odesc">High-quality 1-on-1 manual tuition for learners of all levels. Includes free local pickup.</p>
-          <div class="oprice">£38<small style="font-size:12px; color:var(--t3)">/hr</small></div>
-        </div>
-        <div class="ocard rv" style="border-color:var(--gold)" onclick="oM('20hr Block','£720','🏆')">
-          <div class="ocard-icon">🏆</div>
-          <h3>20-Hour Block</h3>
-          <p class="odesc">Our best value package. Save £40. Includes a free mock test and priority booking for local test dates.</p>
-          <div class="oprice">£720</div>
-        </div>
-        <div class="ocard rv" onclick="oM('Automatic Lesson','£40/hr','⚡')">
-          <div class="ocard-icon">⚡</div>
-          <h3>Automatic Driving</h3>
-          <p class="odesc">Modern automatic lessons. Faster learning curve, no clutch control stress. Ideal for busy urban driving.</p>
-          <div class="oprice">£40<small style="font-size:12px; color:var(--t3)">/hr</small></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section class="sec" id="map-sec" style="background:var(--ink2)">
-    <div class="inn">
-      <div class="lbl">Coverage</div>
-      <h2 class="ttl">We come to you</h2>
-      <div id="map"></div>
-    </div>
-  </section>
+<!-- STICKY CALL -->
+<div class="scall">
+  <div class="slbl">Call to book your lesson</div>
+  <a href="tel:02089771234" class="sbtn" aria-label="Call DriveReady">📞</a>
 </div>
 
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a onclick="gh();cm()">Home</a>
+  <a onclick="gh();cm()">Pricing</a>
+  <a onclick="gh();cm()">Areas</a>
+  <a onclick="gh();cm()">Reviews</a>
+  <a onclick="gh();cm()">FAQ</a>
+  <a href="tel:02089771234" style="color:var(--gold)">📞 020 8977 1234</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo" onclick="gh()">Drive<em>Ready</em></div>
+  <ul class="navl">
+    <li><a onclick="gh()">About</a></li>
+    <li><a onclick="gh()">Pricing</a></li>
+    <li><a onclick="gh()">Areas</a></li>
+    <li><a onclick="gh()">Reviews</a></li>
+    <li><a onclick="gh()">FAQ</a></li>
+    <li><a onclick="oM('Book a Lesson','','🚗')" class="btn-cta">Book a Lesson</a></li>
+  </ul>
+  <button class="mob-btn" onclick="tm()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="app"></div>
+
 <!-- MODAL -->
-<div class="mover" id="mover">
+<div class="mover" id="mover" role="dialog" aria-modal="true">
   <div class="modal">
-    <div class="mclose" onclick="cM()">✕</div>
-    <h3 id="mtitle" style="margin-bottom:10px">Enquire & Book</h3>
-    <p style="font-size:.8rem; color:var(--t3); margin-bottom:20px;">Leave your details and an instructor will call you back within 2 hours.</p>
-    <div class="fg"><label>Name</label><input type="text" placeholder="Your name"></div>
-    <div class="fg"><label>Phone</label><input type="tel" placeholder="Your mobile number"></div>
-    <div class="fg"><label>Postcode</label><input type="text" placeholder="Pickup postcode"></div>
-    <button class="btn-cta" style="width:100%; padding:15px; border:none; cursor:pointer;" onclick="alert('Thanks! We will call you back shortly.')">Send Enquiry</button>
+    <button class="mclose" onclick="cM()">✕</button>
+    <div class="mhdr">
+      <div class="prow" id="prow"></div>
+      <div class="plbls" id="plbls"></div>
+      <h3 id="mtitle">Tell us about you</h3>
+      <p class="mhsub" id="msub">So we can match you with the right instructor.</p>
+      <div class="mpkg"><span class="mpkgi" id="mpkgi">🚗</span><span class="mpkgn" id="mpkgn">Book a Lesson</span></div>
+    </div>
+    <div class="mbody" id="mbody"></div>
+    <div class="mftr" id="mftr">
+      <button class="mbk" id="mbk" onclick="pS()" style="visibility:hidden">← Back</button>
+      <button class="mnext" id="mnx" onclick="nS()">Continue →</button>
+    </div>
   </div>
 </div>
 
 <script>
-// UI Scripts
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('sc', window.scrollY > 50);
-});
+/* ══════════════════════════════
+   CURATED REALISTIC IMAGE LIBRARY
+   — L-plate cars, learner drivers, Isleworth/Twickenham area,
+     UK test centres, driving certificates, UK roads
+══════════════════════════════ */
+const IMGS = {
+  // Hero & main backgrounds
+  hero:          'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1800&q=85&auto=format&fit=crop',
+  // L-plate car on road – UK street
+  lplate1:       'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=900&q=85&auto=format&fit=crop',
+  // Learner driver hands on wheel
+  learner_wheel: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&auto=format&fit=crop',
+  // Instructor in passenger seat pointing
+  instructor1:   'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=900&q=85&auto=format&fit=crop',
+  // Young driver smiling in car
+  driver_happy:  'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&q=85&auto=format&fit=crop',
+  // Dual-control car exterior / UK driving school car
+  ds_car:        'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900&q=85&auto=format&fit=crop',
+  // Passing test / certificate celebration
+  pass_cert:     'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&q=85&auto=format&fit=crop',
+  // Student celebrating with thumbs up, car in background
+  celebrate:     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&auto=format&fit=crop',
+  // UK road – roundabout / junction aerial
+  roundabout:    'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=900&q=85&auto=format&fit=crop',
+  // Twickenham / Thames area – Richmond Bridge
+  twickenham:    'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85&auto=format&fit=crop',
+  // UK suburban road (Isleworth-style residential)
+  suburban_road: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=900&q=85&auto=format&fit=crop',
+  // UK high street / town centre driving
+  uk_highst:     'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85&auto=format&fit=crop',
+  // Motorway / dual carriageway
+  motorway:      'https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=900&q=85&auto=format&fit=crop',
+  // Parking / bay manoeuvre
+  parking:       'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=900&q=85&auto=format&fit=crop',
+  // Night driving
+  night_drive:   'https://images.unsplash.com/photo-1493238792000-8113da705763?w=900&q=85&auto=format&fit=crop',
+  // Automatic car gear selector
+  auto_gear:     'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=85&auto=format&fit=crop',
+  // Intensive / focused driver concentrating
+  intensive:     'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=900&q=85&auto=format&fit=crop',
+  // Richmond Park / green area near Twickenham
+  richmond_pk:   'https://images.unsplash.com/photo-1565118531796-763e5082d113?w=900&q=85&auto=format&fit=crop',
+  // UK test centre style building
+  test_centre:   'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85&auto=format&fit=crop',
+  // Road signs / theory
+  road_signs:    'https://images.unsplash.com/photo-1464219551459-ac14ae01fbe0?w=900&q=85&auto=format&fit=crop',
+  // Refresher / confident mature driver
+  refresher:     'https://images.unsplash.com/photo-1580893246395-52aead8960dc?w=900&q=85&auto=format&fit=crop',
+  // Instructor reviewing notes with student
+  debrief:       'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=900&q=85&auto=format&fit=crop',
+  // UK road network aerial
+  uk_roads:      'https://images.unsplash.com/photo-1416949929422-a1d9c8fe84af?w=900&q=85&auto=format&fit=crop',
+};
 
-function oM(title, price, icon) {
-  document.getElementById('mtitle').innerText = title + " - " + price;
-  document.getElementById('mover').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function cM() {
-  document.getElementById('mover').classList.remove('open');
-  document.body.style.overflow = '';
+/* Create an image wrapper with skeleton loading */
+const IC = {}; // cache
+function mkImg(key, h='100%', caption='') {
+  const url = IMGS[key] || IMGS.hero;
+  const wrap = document.createElement('div');
+  wrap.className = 'img-wrap';
+  wrap.style.height = h;
+  // Skeleton
+  const skel = document.createElement('div');
+  skel.className = 'img-skeleton';
+  wrap.appendChild(skel);
+  // Image
+  const img = document.createElement('img');
+  img.alt = caption || key.replace(/_/g,' ');
+  img.loading = 'lazy';
+  img.onload = () => { img.classList.add('loaded'); skel.style.display='none'; };
+  img.src = url;
+  wrap.appendChild(img);
+  if (caption) {
+    const cap = document.createElement('div');
+    cap.className = 'img-caption';
+    cap.textContent = caption;
+    wrap.appendChild(cap);
+  }
+  return wrap;
 }
 
-// Reveal logic
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('on');
+/* ══════════════════════════════
+   ROUTER
+══════════════════════════════ */
+function navigate(page, offer, push=true) {
+  const app = document.getElementById('app');
+  app.classList.add('fade');
+  setTimeout(() => {
+    app.innerHTML = '';
+    if (page === 'home') renderHome();
+    else renderOffer(offer);
+    app.classList.remove('fade');
+    window.scrollTo(0,0);
+    setTimeout(() => { initRev(); if (page==='home') setTimeout(initMap,360); }, 60);
+  }, 190);
+  if (push) history.pushState({page,offer},'', page==='home' ? '/' : `/offer/${offer?.id||''}`);
+}
+window.addEventListener('popstate', e => e.state && navigate(e.state.page, e.state.offer, false));
+function gh() { navigate('home',null) }
+
+/* ══════════════════════════════
+   NAV / UI
+══════════════════════════════ */
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('sc', scrollY>55));
+function tm() { document.getElementById('mobNav').classList.toggle('open') }
+function cm() { document.getElementById('mobNav').classList.remove('open') }
+
+/* ══════════════════════════════
+   REVEAL
+══════════════════════════════ */
+function initRev() {
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') }), { threshold:.07, rootMargin:'0px 0px -24px 0px' });
+  document.querySelectorAll('.rv,.rvl,.rvr').forEach(el => obs.observe(el));
+}
+
+/* ══════════════════════════════
+   MAP
+══════════════════════════════ */
+let mapDone = false;
+function initMap() {
+  if (mapDone || !document.getElementById('map')) return;
+  mapDone = true;
+  const map = L.map('map', { zoomControl:true, scrollWheelZoom:false }).setView([51.455,-0.345],12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution:'© OSM © CARTO', maxZoom:19 }).addTo(map);
+
+  /* Coverage boundary — convex hull around all covered areas */
+  const boundary = [
+    [51.502,-0.250], // Kew north-east
+    [51.498,-0.280], // Brentford east
+    [51.492,-0.305], // Brentford south
+    [51.480,-0.320], // Richmond north
+    [51.465,-0.295], // Richmond south / East Twickenham
+    [51.455,-0.310], // St Margarets
+    [51.440,-0.338], // Twickenham south
+    [51.420,-0.360], // Strawberry Hill south
+    [51.408,-0.385], // Hampton east
+    [51.405,-0.420], // Hampton west
+    [51.435,-0.432], // Feltham south-west
+    [51.452,-0.428], // Feltham north
+    [51.462,-0.415], // Whitton west
+    [51.478,-0.400], // Hounslow south-west
+    [51.480,-0.375], // Hounslow east
+    [51.485,-0.345], // Isleworth west
+    [51.495,-0.330], // Isleworth north / Brentford south
+    [51.502,-0.250], // close
+  ];
+
+  L.polygon(boundary, {
+    color: '#f59e0b',
+    weight: 2.5,
+    opacity: 0.85,
+    fillColor: '#f59e0b',
+    fillOpacity: 0.07,
+    dashArray: '6,4',
+    lineCap: 'round',
+    lineJoin: 'round'
+  }).addTo(map).bindPopup('<strong style="font-family:Inter,sans-serif">DriveReady Coverage Area</strong><br><small>Free pickup & drop-off within this zone</small>');
+
+  const dot = L.divIcon({ className:'', html:'<div style="background:#3b82f6;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 8px rgba(59,130,246,.85)"></div>', iconSize:[10,10], iconAnchor:[5,5] });
+  const star = L.divIcon({ className:'', html:'<div style="background:#f59e0b;width:16px;height:16px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 0 12px rgba(245,158,11,.9)"></div>', iconSize:[16,16], iconAnchor:[8,8] });
+
+  [['Twickenham',51.4493,-0.3364],['Isleworth',51.4735,-0.3369],['Richmond',51.4613,-0.3037],['Whitton',51.4534,-0.3564],['St Margarets',51.4593,-0.3188],['Strawberry Hill',51.4384,-0.3388],['Hampton',51.4146,-0.3691],['Feltham',51.4473,-0.4098],['Hounslow',51.4671,-0.3601],['Brentford',51.4873,-0.3049],['Kew',51.4789,-0.2856],['East Twickenham',51.4558,-0.3162]].forEach(([n,la,ln]) => {
+    L.marker([la,ln],{icon:dot}).addTo(map).bindPopup(`<strong style="font-family:Inter,sans-serif">${n}</strong><br><small>Lessons available</small>`);
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+  L.marker([51.4735,-0.3369],{icon:star}).addTo(map).bindPopup('<strong style="font-family:Inter,sans-serif">Isleworth Test Centre</strong><br><small>Our specialist test centre</small>').openPopup();
+}
 
-// Map logic
-const map = L.map('map').setView([51.455, -0.345], 13);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
-L.marker([51.4493, -0.3364]).addTo(map).bindPopup('Twickenham Hub').openPopup();
+/* ══════════════════════════════
+   OFFERS DATA
+══════════════════════════════ */
+const OFFERS = [
+  { id:'manual-single', hot:false, icon:'🚗', type:'Manual · Per Hour', name:'Manual Driving Lessons',
+    tag:'The foundation of confident, versatile driving',
+    price:'£38', pn:'per hour', pl:'£38/hr', save:null,
+    heroImg:'lplate1', galImgs:['instructor1','learner_wheel','suburban_road'],
+    heroCap:'L-plate learner driver on a local Twickenham road',
+    galCaps:['DVSA-approved instructor guiding a student','Learner driver building confidence behind the wheel','Practising on residential routes near Isleworth'],
+    short:'DVSA-approved 1-hour manual lessons with expert local instructors covering every Isleworth test route.',
+    long:'Manual lessons give you the complete picture of driving — clutch mastery, gear control, and full road confidence. Our ADI-approved instructors cover all road types found on the Isleworth practical test, from residential streets in Whitton to roundabouts in Hounslow.',
+    why:'Our instructors break gear changes into simple progressive steps so you build muscle memory without overwhelm. Every lesson covers real Isleworth roads — roundabouts, dual carriageways, residential streets and the routes the examiner uses on test day.',
+    incl:['1-hour structured lesson aligned to DVSA standards','Free local pickup & drop-off (TW1–TW13 & surrounding)','End-of-lesson progress debrief & written feedback','Modern dual-control vehicle, fully insured','Flexible morning, afternoon or evening slots','WhatsApp access to your instructor between lessons'],
+    faqs:[{q:'Do I need a provisional licence?',a:'Yes — you must hold a valid UK provisional driving licence before taking a lesson on public roads. Apply at a Post Office or online via GOV.UK.'},{q:'What if I\'ve had lessons elsewhere?',a:'No problem. We start with a short assessment to understand your current level, then pick up from there — no wasted time or repeated basics.'}],
+    rel:['automatic-single','manual-block-20','intensive-2week'] },
+
+  { id:'automatic-single', hot:false, icon:'⚡', type:'Automatic · Per Hour', name:'Automatic Driving Lessons',
+    tag:'Focus on the road, not the gears',
+    price:'£40', pn:'per hour', pl:'£40/hr', save:null,
+    heroImg:'auto_gear', galImgs:['driver_happy','instructor1','suburban_road'],
+    heroCap:'Modern automatic vehicle — no clutch, pure road confidence',
+    galCaps:['Student gaining confidence in an automatic','Instructor and student working through an Isleworth route','Practising in quiet residential streets'],
+    short:'Focus purely on road skills without gear changes. Ideal for nervous learners and busy professionals.',
+    long:'Automatic lessons remove clutch and gear complexity entirely so you can focus on road awareness, positioning and hazard perception. Many of our students find they progress noticeably faster in an automatic — particularly those who previously struggled with clutch control.',
+    why:'Our modern automatic vehicles are clean, well-maintained and equipped with dual controls for complete safety. We guide you through all situations on the Isleworth test — busy junctions, roundabouts, residential streets and dual carriageways.',
+    incl:['1-hour automatic lesson in a modern dual-control vehicle','Free local pickup & drop-off','End-of-lesson progress debrief','Ideal for anxious or nervous drivers','WhatsApp instructor access between lessons','Isleworth test route practice included when ready'],
+    faqs:[{q:'Does an automatic licence limit me?',a:'An automatic licence means you can only drive automatics legally in the UK. For daily commuting and EVs this is increasingly practical — but if you want full flexibility, manual is the better long-term choice.'},{q:'Are automatic lessons more expensive?',a:'Only slightly — £40/hr vs £38/hr for manual. Our automatic vehicles cost more to run, but many students save money overall by progressing faster.'}],
+    rel:['manual-single','manual-block-20','refresher'] },
+
+  { id:'manual-block-20', hot:true, icon:'🏆', type:'Block Package · Best Value', name:'20-Hour Manual Block',
+    tag:'The most popular route to your licence',
+    price:'£720', pn:'20 hours · save £40', pl:'£720 for 20 hours', save:'Save £40',
+    heroImg:'pass_cert', galImgs:['lplate1','roundabout','debrief'],
+    heroCap:'The moment every student works towards — passing first time',
+    galCaps:['Learner driver building skills on local roads','Practising roundabouts on the Isleworth test route','Post-lesson debrief — understanding exactly what to improve'],
+    short:'20 structured manual hours from learner to test-ready. Our most popular package — and the best value.',
+    long:'The 20-hour block is the most popular choice amongst our Twickenham and Isleworth students — and for good reason. It gives you enough hours to build genuine confidence across all road types, work through all DVSA manoeuvres, and dedicate the final sessions to Isleworth test route preparation.',
+    why:'With 20 hours you get a complete, structured curriculum: basics first, then junctions and roundabouts, manoeuvres, dual carriageways, and finally intensive test-route practice. We include a free mock test to identify any remaining gaps before you book the real thing.',
+    incl:['20 × 1-hour manual lessons (or 10 × 2-hour, your choice)','Full DVSA-aligned lesson plan and progress tracking','Free mock test + detailed debrief','Theory test preparation materials included','Isleworth test-route focus from lesson 14 onwards','WhatsApp instructor support throughout'],
+    faqs:[{q:'Can I spread lessons over several months?',a:'Yes — your block hours never expire. That said, weekly lessons produce the best results; too large a gap means re-learning lost ground.'},{q:'What if I need more than 20 hours?',a:'You can top up at any time at the same per-hour rate (£38). Some students need 25–35 professional hours total — completely normal and nothing to worry about.'},{q:'Is 20 hours enough to pass?',a:'With 20 professional hours plus some private practice you\'re in a strong position. We\'ll give you an honest, no-pressure view of readiness throughout.'}],
+    rel:['manual-single','manual-block-30','intensive-2week'] },
+
+  { id:'manual-block-30', hot:false, icon:'🚀', type:'Block Package · Complete', name:'30-Hour Manual Block',
+    tag:'The complete journey from zero to licence',
+    price:'£1,050', pn:'30 hours · save £90', pl:'£1,050 for 30 hours', save:'Save £90',
+    heroImg:'celebrate', galImgs:['motorway','parking','night_drive'],
+    heroCap:'Celebrating a first-time pass — the goal of every DriveReady student',
+    galCaps:['Motorway confidence — included in the 30-hour curriculum','Mastering bay parking manoeuvres','Night driving sessions — available in this block'],
+    short:'Everything from basics to advanced manoeuvres. Two mock tests, theory support, and a Pass Plus discount.',
+    long:'The 30-hour block is our most comprehensive package — designed for complete beginners who want a clear, fully supported path all the way to test day. Two mock tests, theory support pack and a Pass Plus discount make this outstanding value.',
+    why:'Starting from scratch? We introduce basics gradually, build to complex junctions and roundabouts, cover motorway and dual carriageway driving, practise all DVSA manoeuvres, and include two full mock tests. Saving £90 vs individual lesson pricing.',
+    incl:['30 × 1-hour manual lessons at your pace','Full structured curriculum from first principles','2 × full mock tests with detailed written reports','Theory test preparation pack & hazard perception tips','Motorway & dual carriageway sessions','Night driving session included','Complete Isleworth test route mastery','10% discount on Pass Plus after passing'],
+    faqs:[{q:'I\'m a complete beginner — is this for me?',a:'Absolutely. This package is designed specifically for learners starting from zero. We move at your pace and will never push you towards a test before you\'re genuinely ready.'},{q:'Can I study for my theory test at the same time?',a:'Yes — and we encourage it. We provide digital study resources and quiz you on theory topics during lessons to reinforce what you\'re learning.'}],
+    rel:['manual-block-20','intensive-2week','automatic-single'] },
+
+  { id:'automatic-block', hot:false, icon:'⭐', type:'Automatic Block · Best Value', name:'20-Hour Automatic Block',
+    tag:'The fastest route to your automatic licence',
+    price:'£760', pn:'20 hours · save £40', pl:'£760 for 20 hours', save:'Save £40',
+    heroImg:'auto_gear', galImgs:['driver_happy','roundabout','pass_cert'],
+    heroCap:'Automatic driving — let the car do the gear work',
+    galCaps:['Building confidence lesson by lesson','Roundabout practice on the Isleworth test route','Celebrating a first-time pass in an automatic'],
+    short:'20 structured hours in an automatic vehicle. Progress faster, stress less, pass with confidence.',
+    long:'Our 20-hour automatic block is ideal for learners who want to focus entirely on road skills without the added layer of gear and clutch management. Many students cover the road-skill equivalent of 25+ manual hours\' worth of learning in 20 automatic sessions.',
+    why:'Students in automatics often progress faster in road awareness, hazard perception and positioning — because their full cognitive load is on the road, not the gearbox. This package includes a free mock test and full Isleworth test route preparation from lesson 12 onwards.',
+    incl:['20 × 1-hour automatic lessons','Structured DVSA-aligned curriculum','Free mock test + debrief','Theory test preparation materials','Isleworth test route focus from lesson 12+','WhatsApp instructor support throughout'],
+    faqs:[{q:'Will I progress faster in automatic?',a:'Many students do — particularly those who find clutch control stressful. Without that barrier, all attention goes to road skills, positioning and hazard awareness.'}],
+    rel:['automatic-single','manual-block-20','intensive-2week'] },
+
+  { id:'intensive-5day', hot:false, icon:'⚡', type:'Intensive Course · 5 Days', name:'5-Day Crash Course',
+    tag:'Your licence in a single week',
+    price:'£599', pn:'20 hours over 5 days', pl:'£599 — 20 hours', save:null,
+    heroImg:'intensive', galImgs:['lplate1','roundabout','suburban_road'],
+    heroCap:'Intensive daily sessions — fast-tracking you to test standard',
+    galCaps:['L-plate on, confidence building fast','Roundabout mastery — key to passing at Isleworth','Local Isleworth roads practised daily until second nature'],
+    short:'Theory passed? Get fully test-ready in just 5 intensive days of structured, focused tuition.',
+    long:'If you need your licence quickly — for a new job, a family commitment, or because you\'re simply tired of waiting — our 5-day crash course gets you test-ready in a single week. A valid theory test pass is required before starting.',
+    why:'Five consecutive days of 4-hour sessions builds rapid muscle memory and road confidence. By day three most students are driving independently with minimal prompting. Days four and five focus entirely on Isleworth test routes and mock examinations.',
+    incl:['5 × 4-hour daily sessions (20 hours total)','Theory test pass required before course start','Full mock test on day 4','Test booking support at Isleworth Test Centre','WhatsApp access to your instructor throughout','Emergency brake & hazard awareness focus'],
+    faqs:[{q:'Do I need prior driving experience?',a:'Some prior experience is helpful but not essential. We allocate the first sessions to fundamentals for complete beginners taking this course.'},{q:'What if I don\'t pass at the end?',a:'It happens — test nerves are real and occasionally unavoidable. We\'ll schedule a debrief session and arrange top-up lessons at the standard £38/hr rate.'}],
+    rel:['intensive-2week','manual-block-20','manual-single'] },
+
+  { id:'intensive-2week', hot:true, icon:'🔥', type:'Intensive Course · 2 Weeks', name:'2-Week Intensive Course',
+    tag:'The most popular intensive — properly prepared',
+    price:'£999', pn:'36 hours over 2 weeks', pl:'£999 — 36 hours', save:null,
+    heroImg:'intensive', galImgs:['instructor1','roundabout','lplate1'],
+    heroCap:'Two weeks of expert-led tuition, structured for maximum progress',
+    galCaps:['Daily instructor guidance across all road types','Isleworth test routes mastered in the final week','L-plate confidence building from day one'],
+    short:'36 hours of intensive tuition over two weeks — the most thorough fast-track route to your licence.',
+    long:'The 2-week intensive is our most booked fast-track course. Two weeks gives you the intensity of a crash course with enough time to consolidate what you\'ve learned and address any problem areas properly before test day.',
+    why:'Over 10 working days you\'ll clock 36 hours of structured driving in three clear phases: foundation (days 1–3), skill building (days 4–7) and test preparation (days 8–10). We use Isleworth test routes from day eight and conduct a full mock test on day nine.',
+    incl:['10 × 3-hour sessions + 6 dedicated exam-prep hours','Theory test support materials included','2 × full mock tests with written reports','Complete mastery of Isleworth test routes','Test booking at Isleworth Test Centre included','WhatsApp instructor support from 7am to 8pm daily','Written daily progress report after each session'],
+    faqs:[{q:'Can I start without a theory pass?',a:'You can begin the course, but you must pass your theory test before booking the practical. We actively support your theory prep during the course.'},{q:'Is intensive too much for a nervous driver?',a:'Not at all. Daily repetition builds confidence remarkably quickly. We specifically pair anxious learners with our most patient, experienced instructors.'}],
+    rel:['intensive-5day','manual-block-20','manual-block-30'] },
+
+  { id:'refresher', hot:false, icon:'🔄', type:'Refresher · Flexible', name:'Refresher Driving Lessons',
+    tag:'Back on the road with complete confidence',
+    price:'£42', pn:'per hour (5-hr pack £195)', pl:'£42/hr or £195 for 5 hrs', save:'5-hr pack saves £15',
+    heroImg:'refresher', galImgs:['motorway','parking','road_signs'],
+    heroCap:'Refresher lessons — tailored entirely to where you need help',
+    galCaps:['Motorway confidence — often the biggest refresher focus','Parking precision — a common returning-driver concern','UK Highway Code updates for returning or international drivers'],
+    short:'Been off the road? Rebuild confidence and update your road knowledge with a fully tailored refresher programme.',
+    long:'Life gets in the way of driving — whether it\'s years abroad, a medical pause, or simply never needing a car in the city. Our refresher lessons are completely personalised: we start with an assessment lesson to understand where you are, then focus on exactly the areas you need.',
+    why:'Unlike standard lessons, refresher sessions skip the basics and go straight to your specific gaps. We offer motorway driving, night driving, complex urban junction confidence, and full UK Highway Code updates for international licence holders. Available in manual or automatic. Always judgment-free.',
+    incl:['Skills assessment on your very first lesson','Personalised plan focused entirely on your gaps','Manual or automatic — your choice','Motorway and dual carriageway confidence sessions','Night driving available on request','UK Highway Code refresher for returning and international drivers','5-hour pack available at £195 — save £15'],
+    faqs:[{q:'How many refresher lessons will I need?',a:'Most returning drivers need between 3 and 8 hours depending on how long they\'ve been off the road. We\'ll give you an honest, no-pressure assessment after lesson one.'},{q:'I have a foreign licence — can you help?',a:'Yes. We advise on UK driving requirements and help you prepare for any tests required to convert your licence.'}],
+    rel:['manual-single','automatic-single','manual-block-20'] },
+];
+
+function getOffer(id) { return OFFERS.find(o=>o.id===id) }
+function getRel(ids) { return ids.map(id=>OFFERS.find(o=>o.id===id)).filter(Boolean) }
+
+/* ══════════════════════════════
+   SHARED HTML HELPERS
+══════════════════════════════ */
+function callStrip() {
+  return `<div class="cstrip"><p>📞 Speak directly with your instructor — no call centres, no waiting</p><a href="tel:02089771234">Call 020 8977 1234</a></div>`;
+}
+function trustBar() {
+  return `<div class="tbar"><div class="tinn"><div class="ti">🏆 <strong>DVSA Approved</strong> School</div><div class="ti">⭐ <strong>4.9/5</strong> Google (312 reviews)</div><div class="ti">🎓 <strong>ADI Qualified</strong> Instructors</div><div class="ti">📍 <strong>Isleworth Test Centre</strong> Specialists</div><div class="ti">🔄 <strong>Free cancellation</strong> with 48hr notice</div></div></div>`;
+}
+function mkFooter() {
+  const links = OFFERS.slice(0,5).map(o=>`<li><a onclick="navigate('offer',OFFERS.find(x=>x.id==='${o.id}'))">${o.name}</a></li>`).join('');
+  return `<footer><div class="fgrid footer-grid"><div class="fbrand"><span class="logo" onclick="gh()" style="cursor:pointer;display:block;margin-bottom:12px">Drive<em>Ready</em></span><p>Premium driving school serving Twickenham, Isleworth and surrounding areas. DVSA-approved with a 94% first-time pass rate.</p><div class="fdvsa">🏆 DVSA Approved School</div></div><div class="fcol"><h4>Packages</h4><ul>${links}</ul></div><div class="fcol"><h4>Areas Covered</h4><ul>${['Twickenham','Isleworth','Richmond','Feltham','Hounslow','Brentford'].map(a=>`<li><a>${a}</a></li>`).join('')}</ul></div><div class="fcol"><h4>Contact</h4><ul><li><a href="tel:02089771234">📞 020 8977 1234</a></li><li><a href="mailto:hello@driveready.co.uk">✉ hello@driveready.co.uk</a></li><li><a>14 King Street, Twickenham TW1 3SN</a></li><li><a>Mon–Sat, 7am – 8pm</a></li></ul></div></div><div class="fbot"><p>© 2025 DriveReady Ltd. All rights reserved. Registered in England & Wales.</p><div class="fleg"><a>Privacy Policy</a><a>Terms</a><a>Sitemap</a></div></div></footer>`;
+}
+
+/* ══════════════════════════════
+   HOME PAGE
+══════════════════════════════ */
+function renderHome() {
+  mapDone = false;
+  const app = document.getElementById('app');
+
+  /* — HERO — */
+  const hero = document.createElement('section');
+  hero.className = 'hero';
+  const bg = document.createElement('div');
+  bg.className = 'hero-bg';
+  const bgImg = document.createElement('img');
+  bgImg.src = IMGS.hero;
+  bgImg.alt = 'Driving lesson in progress — Twickenham';
+  bgImg.loading = 'eager';
+  bg.appendChild(bgImg);
+  bg.innerHTML += `<div class="hero-grad"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>`;
+  hero.appendChild(bg);
+  const hc = document.createElement('div');
+  hc.className = 'hero-c';
+  hc.innerHTML = `
+    <div class="hero-badge"><span class="bdot"></span>DVSA-Approved · Isleworth Test Centre Specialists</div>
+    <h1>Drive with<br><span class="gy">Confidence.</span><br><span class="gb">Pass First Time.</span></h1>
+    <p class="hero-p">Premium driving lessons in Twickenham, Isleworth, Richmond and surrounding areas. Expert instructors, proven results.</p>
+    <div class="hero-acts">
+      <a href="#off" class="b-gold" onclick="document.getElementById('off').scrollIntoView({behavior:'smooth'});return false">🚗 View All Packages</a>
+      <a href="tel:02089771234" class="b-ghost">📞 020 8977 1234</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="sn">94%</div><div class="sl">First-time pass rate</div></div>
+      <div><div class="sn">312+</div><div class="sl">Five-star reviews</div></div>
+      <div><div class="sn">15+</div><div class="sl">Years experience</div></div>
+      <div><div class="sn">12</div><div class="sl">Areas covered</div></div>
+    </div>`;
+  hero.appendChild(hc);
+  app.appendChild(hero);
+
+  app.insertAdjacentHTML('beforeend', callStrip() + trustBar());
+
+/* ══════════════════════════════
+   FEATURES GRID — FIXED UNIFORM CARDS
+══════════════════════════════ */
+.fgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+
+.fcard {
+  background: var(--ink3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r);
+  padding: 30px 24px;
+  transition: all .28s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Ensures consistent inner spacing */
+}
+
+.fcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  opacity: 0;
+  transition: opacity .28s;
+}
+
+.fcard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.13);
+  box-shadow: 0 14px 44px rgba(0,0,0,.28);
+}
+
+.fcard:hover::before { opacity: 1; }
+
+.ficon {
+  width: 44px;
+  height: 44px;
+  background: rgba(37,99,235,.15);
+  border: 1px solid rgba(37,99,235,.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+.fcard h3 {
+  font-size: .97rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.fcard p {
+  font-size: .83rem;
+  color: var(--t2);
+  line-height: 1.72;
+  flex: 1;           /* This is key */
+  margin-top: auto;  /* Pushes text to bottom for perfect alignment */
+}
+
+  /* — INSTRUCTOR SPLIT — */
+  const inst = document.createElement('section');
+  inst.className='sec'; inst.style.background='var(--ink2)';
+  const iInn = document.createElement('div'); iInn.className='inn';
+  const spl = document.createElement('div'); spl.className='split';
+
+  const simgs = document.createElement('div'); simgs.className='simgs rvl';
+  simgs.innerHTML = `
+    <div class="car-showcase">
+      <img
+        src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=900&q=85&auto=format&fit=crop&crop=center"
+        alt="DriveReady learner car on a local road"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:20px;filter:brightness(.75) saturate(1.05)"
+        loading="lazy"
+      />
+      <div style="position:absolute;inset:0;border-radius:20px;background:linear-gradient(to top,rgba(6,9,16,.82) 0%,rgba(6,9,16,.15) 55%,transparent 100%);z-index:1"></div>
+      <div class="car-stats-row" style="z-index:2">
+        <div class="car-stat"><div class="car-stat-n">ADI</div><div class="car-stat-l">Certified</div></div>
+        <div class="car-stat"><div class="car-stat-n">DVSA</div><div class="car-stat-l">Approved</div></div>
+        <div class="car-stat"><div class="car-stat-n">94%</div><div class="car-stat-l">Pass Rate</div></div>
+      </div>
+    </div>`;
+
+
+  const sContent = document.createElement('div'); sContent.className='rvr';
+  sContent.innerHTML = `<div class="lbl">Your Instructors</div><h2 class="ttl">Real experts,<br>real results</h2><p class="sub">ADI-qualified, locally based, and genuinely passionate about helping every student pass first time.</p><ul class="cklist"><li><div class="ck">✓</div><span>Full DVSA Approved Driving Instructor (ADI) licence</span></li><li><div class="ck">✓</div><span>DBS-checked and fully insured for your peace of mind</span></li><li><div class="ck">✓</div><span>Experienced with nervous learners and students with learning differences</span></li><li><div class="ck">✓</div><span>Specialist knowledge of all Isleworth Driving Test Centre routes</span></li><li><div class="ck">✓</div><span>Regular CPD training to keep teaching methods current</span></li></ul><div style="margin-top:26px;display:flex;gap:11px;flex-wrap:wrap"><a class="b-gold" onclick="document.getElementById('off').scrollIntoView({behavior:'smooth'})" style="cursor:pointer">View Packages</a><a href="tel:02089771234" class="b-ghost">📞 Call Us</a></div>`;
+
+  spl.appendChild(simgs); spl.appendChild(sContent);
+  iInn.appendChild(spl); inst.appendChild(iInn); app.appendChild(inst);
+
+  /* — OFFERS GRID — */
+  const offSec = document.createElement('section');
+  offSec.className='sec bgsec'; offSec.id='off'; offSec.style.position='relative'; offSec.style.overflow='hidden';
+  const bgOff = document.createElement('img');
+  bgOff.className='bgimg'; bgOff.src=IMGS.uk_roads; bgOff.alt='';
+  const ovOff = document.createElement('div'); ovOff.className='bgov';
+  offSec.appendChild(bgOff); offSec.appendChild(ovOff);
+  const oInn = document.createElement('div'); oInn.className='inn'; oInn.style.position='relative'; oInn.style.zIndex='2';
+  oInn.innerHTML = `<div class="hdr rv"><div class="lbl">Our Packages</div><h2 class="ttl">Every learner, every<br>budget, every timeline</h2><p class="sub">Click any package for the full details. No hidden fees — all lessons include free local pickup & drop-off.</p></div>`;
+  const og = document.createElement('div'); og.className='ogrid';
+  OFFERS.forEach(o => {
+    const c = document.createElement('div');
+    c.className = `ocard rv${o.hot?' hot':''}`;
+    c.onclick = () => navigate('offer',o);
+    if (o.hot) c.innerHTML += `<span class="hot-badge">⭐ Most Popular</span>`;
+    c.innerHTML += `<div class="ocard-icon">${o.icon}</div><div class="otype">${o.type}</div><div class="obody"><h3>${o.name}</h3><p class="odesc">${o.short}</p><div class="oprice">${o.price}<small>${o.pn}</small></div><div class="octa"><span>View full details →</span><span style="color:var(--gold)">→</span></div></div>`;
+    og.appendChild(c);
+  });
+  oInn.appendChild(og);
+  oInn.innerHTML += `<div style="text-align:center;margin-top:44px;padding-top:8px"><p style="color:var(--t3);font-size:.84rem;margin-bottom:13px">Not sure which package suits you?</p><a href="tel:02089771234" class="b-gold" style="display:inline-flex">📞 Call 020 8977 1234 — We'll Guide You</a></div>`;
+  offSec.appendChild(oInn); app.appendChild(offSec);
+
+  /* — AREAS + MAP — */
+  const arSec = document.createElement('section');
+  arSec.className='sec'; arSec.style.background='var(--ink3)';
+  const arInn = document.createElement('div'); arInn.className='inn';
+  arInn.innerHTML = `<div class="hdr rv"><div class="lbl">Coverage Area</div><h2 class="ttl">We come to you,<br>wherever you are</h2><p class="sub">All lessons include free local pickup and drop-off. Covering all postcodes around Isleworth Test Centre.</p></div><div class="agrid rv">${['Twickenham','Isleworth','Richmond','Whitton','St Margarets','Strawberry Hill','Hampton','Feltham','Hounslow','Brentford','Kew','East Twickenham'].map(a=>`<div class="achip"><div class="adot"></div>${a}</div>`).join('')}</div><div id="map"></div><p style="text-align:center;margin-top:18px;font-size:.8rem;color:var(--t3)">Not sure if we cover your area? <a href="tel:02089771234" style="color:var(--gold);font-weight:600">Call us</a> and we'll confirm straight away.</p>`;
+  arSec.appendChild(arInn); app.appendChild(arSec);
+
+  /* — PROMISE BANNER — */
+  const prSec = document.createElement('section');
+  prSec.className='sec bgsec'; prSec.style.position='relative'; prSec.style.overflow='hidden';
+  const bgPr = document.createElement('img');
+  bgPr.className='bgimg'; bgPr.src=IMGS.pass_cert; bgPr.alt='';
+  const ovPr = document.createElement('div'); ovPr.className='bgov';
+  prSec.appendChild(bgPr); prSec.appendChild(ovPr);
+  const prInn = document.createElement('div'); prInn.className='inn'; prInn.style.position='relative'; prInn.style.zIndex='2';
+  prInn.innerHTML = `<div class="ctab rv"><div class="lbl" style="display:flex;justify-content:center">Our Guarantee</div><h2>Not feeling the progress?<br>Your third lesson is on us.</h2><p>If you don't feel you've progressed after your first two lessons, your third is completely free. No small print, no arguments.</p><div class="ctab-acts"><a onclick="document.getElementById('off').scrollIntoView({behavior:'smooth'})" class="b-gold" style="cursor:pointer">🚗 View Packages</a><a href="tel:02089771234" class="b-ghost">📞 020 8977 1234</a></div></div>`;
+  prSec.appendChild(prInn); app.appendChild(prSec);
+
+  /* — TESTIMONIALS — */
+  const tSec = document.createElement('section');
+  tSec.className='sec'; tSec.style.background='var(--ink2)';
+  const tInn = document.createElement('div'); tInn.className='inn';
+  const tdata = [
+    ['S','Sarah M.','Twickenham · Passed 1st time','Passed first time at Isleworth after 24 lessons. My instructor was incredibly patient and calm throughout. Cannot recommend DriveReady enough.','Google',''],
+    ['J','James T.','Feltham · Switched from another school','Failed with two other schools. Switched to DriveReady, completed the 20-hour block and passed on my very next attempt. The Isleworth route knowledge is second to none.','Google','linear-gradient(135deg,#6d28d9,#2563eb)'],
+    ['P','Priya K.','Hounslow · 2-Week Intensive','Did the 2-week intensive to get my licence for a new job. It was challenging but absolutely worth every session — professional, structured and genuinely supportive.','Trustpilot','linear-gradient(135deg,#059669,#1d4ed8)'],
+    ['R','Rebecca O.','St Margarets · Nervous learner','I had real driving anxiety and had written off ever getting a licence. My instructor was so calm and patient. I passed after 30 lessons — still can\'t believe it!','Google','linear-gradient(135deg,#dc2626,#7c3aed)'],
+    ['D','Daniel F.','Richmond · Automatic 20hr block','Automatic 20-hour block was perfect for me. Instructor arrived on time every single session, car was always spotless. Passed with only 2 minors after 18 hours.','Google','linear-gradient(135deg,#0ea5e9,#1d4ed8)'],
+    ['L','Linda C.','Brentford · Refresher lessons','Back on the road after 8 years. Within 3 sessions I felt completely confident again. Will be recommending DriveReady to everyone I know.','Trustpilot','linear-gradient(135deg,#7c3aed,#0ea5e9)'],
+  ];
+  tInn.innerHTML = `<div class="hdr rv"><div class="lbl">Student Reviews</div><h2 class="ttl">312+ students.<br>One consistent verdict.</h2><p class="sub">Rated 4.9/5 on Google and 4.8 on Trustpilot. Here's what our recent students say.</p></div><div class="tgrid">${tdata.map(([i,n,d,t,pl,gr])=>`<div class="tcard rv"><div class="tplat">${pl==='Google'?'⭐':'★'} ${pl}</div><div class="tstars">★★★★★</div><p class="ttxt">${t}</p><div class="tauth"><div class="tav" style="${gr?`background:${gr}`:''}">${i}</div><div><div class="tname">${n}</div><div class="tdet">${d}</div></div></div></div>`).join('')}</div><div style="text-align:center;margin-top:32px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><span style="background:var(--g1);border:1px solid rgba(255,255,255,.08);padding:8px 18px;border-radius:6px;font-size:.78rem;color:var(--t2)">⭐ 4.9 on Google Reviews</span><span style="background:var(--g1);border:1px solid rgba(255,255,255,.08);padding:8px 18px;border-radius:6px;font-size:.78rem;color:var(--t2)">★ 4.8 on Trustpilot</span></div>`;
+  tSec.appendChild(tInn); app.appendChild(tSec);
+
+  /* — FAQ — */
+  const fqSec = document.createElement('section');
+  fqSec.className='sec bgsec'; fqSec.style.position='relative'; fqSec.style.overflow='hidden';
+  const bgFq = document.createElement('img');
+  bgFq.className='bgimg'; bgFq.src=IMGS.twickenham; bgFq.alt='';
+  const ovFq = document.createElement('div'); ovFq.className='bgov';
+  fqSec.appendChild(bgFq); fqSec.appendChild(ovFq);
+  const fqInn = document.createElement('div'); fqInn.className='inn'; fqInn.style.position='relative'; fqInn.style.zIndex='2';
+  const faqs=[['How many lessons will I need?','The DVSA national average is around 45 hours of professional instruction. Our students typically need 20–35 professional hours. We give honest, no-pressure guidance throughout — you\'ll always know where you stand.'],['Which test centre will I use?','We specialise in Isleworth Driving Test Centre and know every test route intimately. We can also accompany you in our vehicle on test day for a small additional fee — most students prefer the familiarity of their lesson car.'],['Manual vs automatic — which should I choose?','Manual gives you a licence that covers all vehicles. Automatic is faster to learn and ideal for city driving or nervous learners — but limits you to automatics only. We\'re happy to discuss which suits your situation.'],['Can I cancel or reschedule a lesson?','Yes — free cancellation or rescheduling with 48 hours\' notice. Emergency situations are always handled with discretion and understanding.'],['Do I need my theory test before starting lessons?','No — you can and often should start lessons before passing your theory. Practical experience reinforces theory learning. You do need a theory pass before booking your DVSA practical test.'],['Can I use your car for my driving test?','Yes. We charge a small fee that includes a pre-test warm-up lesson in the same car immediately before your appointment. Most students prefer taking their test in a familiar vehicle.'],['Do you support learners with disabilities or learning differences?','Yes. We work with students with physical disabilities, dyslexia, ADHD and anxiety conditions. Please mention this at enquiry stage so we can assign the right instructor and vehicle.']];
+  fqInn.innerHTML=`<div class="hdr rv" style="text-align:center"><div class="lbl" style="display:flex;justify-content:center">FAQ</div><h2 class="ttl">Common questions,<br>clear answers</h2></div><div class="fwrap rv">${faqs.map(([q,a])=>`<div class="fi"><div class="fq" onclick="this.parentElement.classList.toggle('open')"><h4>${q}</h4><div class="fchev">▼</div></div><div class="fa"><div class="fa-in">${a}</div></div></div>`).join('')}</div>`;
+  fqSec.appendChild(fqInn); app.appendChild(fqSec);
+
+  /* — FINAL CTA — */
+  const ctSec = document.createElement('section');
+  ctSec.className='sec'; ctSec.style.background='var(--ink2)';
+  ctSec.innerHTML=`<div class="inn"><div class="ctab rv"><div class="lbl" style="display:flex;justify-content:center">Get Started Today</div><h2>Your licence is closer<br>than you think</h2><p>Join hundreds of local drivers who passed with DriveReady. Enquire in under 60 seconds — or call us directly.</p><div class="ctab-acts"><button class="b-gold" onclick="oM('Book a Lesson','','🚗')" style="font-size:.9rem;padding:13px 30px">🚗 Book a Lesson</button><a href="tel:02089771234" class="b-ghost" style="font-size:.9rem;padding:13px 30px">📞 020 8977 1234</a></div><p style="margin-top:12px;font-size:.73rem;color:var(--t3)">Mon–Sat 7am–8pm · All enquiries answered within 2 hours</p></div></div>`;
+  app.appendChild(ctSec);
+
+  app.insertAdjacentHTML('beforeend', mkFooter());
+}
+
+/* ══════════════════════════════
+   OFFER PAGE
+══════════════════════════════ */
+function renderOffer(o) {
+  const app = document.getElementById('app');
+
+  /* HERO */
+  const oh = document.createElement('section'); oh.className='ophero';
+  const bg = document.createElement('div'); bg.className='ophbg';
+  const bgImg = document.createElement('img');
+  bgImg.src = IMGS[o.heroImg] || IMGS.hero;
+  bgImg.alt = o.heroCap || o.name;
+  bgImg.style.cssText='width:100%;height:100%;object-fit:cover;filter:brightness(.22) saturate(1.1)';
+  bg.appendChild(bgImg);
+  bg.innerHTML += `<div class="ophgrad"></div>`;
+  oh.appendChild(bg);
+  const hc = document.createElement('div'); hc.className='ophc';
+  const saveHtml = o.save ? `<span class="p-save">${o.save}</span>` : '';
+  hc.innerHTML = `<div class="breadc"><span onclick="gh()">Home</span><span class="sep">›</span><span onclick="gh()">Packages</span><span class="sep">›</span><span style="color:var(--gold)">${o.name}</span></div><div class="lbl">${o.type}</div><h1 style="font-size:clamp(2rem,4.5vw,3.8rem);font-weight:800;margin-bottom:11px;letter-spacing:-.04em">${o.name}</h1><p style="font-size:1rem;color:var(--t2);max-width:560px;font-weight:400;line-height:1.8">${o.tag}</p><div class="ophprice"><span class="p-big">${o.price}</span><span class="p-note">${o.pn}</span>${saveHtml}</div><div style="display:flex;flex-wrap:wrap;gap:11px;margin-top:24px"><button class="b-gold" onclick="oM('${o.name}','${o.pl}','${o.icon}')">📋 Enquire & Book</button><a href="tel:02089771234" class="b-ghost">📞 020 8977 1234</a></div>`;
+  oh.appendChild(hc); app.appendChild(oh);
+
+  /* DETAIL SECTION */
+  const ds = document.createElement('section'); ds.className='sec'; ds.style.background='var(--ink2)';
+  const di = document.createElement('div'); di.className='inn';
+
+  /* Gallery */
+  const gal = document.createElement('div'); gal.className='opg rv';
+  o.galImgs.forEach((k,i) => { const w=mkImg(k,'165px',o.galCaps?.[i]||''); gal.appendChild(w); });
+  di.appendChild(gal);
+
+  /* Main + sidebar */
+  const det = document.createElement('div'); det.className='opdet';
+  const main = document.createElement('div'); main.className='opmain rvl';
+  main.innerHTML = `<h2>About this package</h2><p>${o.long}</p><h2>Why choose this?</h2><p>${o.why}</p><h2>What's included</h2><ul class="incl">${o.incl.map(x=>`<li>${x}</li>`).join('')}</ul><h2>Frequently asked questions</h2>${o.faqs.map(({q,a})=>`<div class="fi" style="margin-bottom:8px"><div class="fq" onclick="this.parentElement.classList.toggle('open')"><h4>${q}</h4><div class="fchev">▼</div></div><div class="fa"><div class="fa-in">${a}</div></div></div>`).join('')}`;
+
+  const sb = document.createElement('div'); sb.className='opsb rvr';
+  sb.innerHTML = `<div class="opsc"><div class="p-big">${o.price}</div><span class="p-note">${o.pn}</span><button class="b-gold" onclick="oM('${o.name}','${o.pl}','${o.icon}')">📋 Enquire & Book</button><a href="tel:02089771234" class="b-outline">📞 Call 020 8977 1234</a><div class="sbfacts"><div class="sbf">📍 Free local pickup & drop-off</div><div class="sbf">🏆 DVSA Approved Driving School</div><div class="sbf">📈 94% first-time pass rate</div><div class="sbf">🔄 Free cancellation with 48hr notice</div><div class="sbf">📞 Response within 2 hours</div></div></div>`;
+
+  det.appendChild(main); det.appendChild(sb); di.appendChild(det); ds.appendChild(di); app.appendChild(ds);
+
+  /* Related */
+  const rel = getRel(o.rel);
+  if (rel.length) {
+    const rs = document.createElement('section'); rs.className='sec'; rs.style.background='var(--ink3)';
+    const ri = document.createElement('div'); ri.className='inn';
+    ri.innerHTML = `<div class="hdr rv"><div class="lbl">You Might Also Like</div><h2 class="ttl">Related packages</h2></div>`;
+    const rg = document.createElement('div'); rg.className='rrgrid';
+    rel.forEach(ro => {
+      const c = document.createElement('div'); c.className='ocard rv'; c.onclick=()=>navigate('offer',ro);
+      const id2 = document.createElement('div'); id2.className='oimg';
+      const rw = mkImg(ro.heroImg,'100%',ro.heroCap); rw.style.borderRadius='0'; id2.appendChild(rw); c.appendChild(id2);
+      c.innerHTML += `<div class="obody"><div class="otype">${ro.type}</div><h3>${ro.name}</h3><div class="oprice">${ro.price}<small>${ro.pn}</small></div><div class="octa"><span>View details →</span></div></div>`;
+      rg.appendChild(c);
+    });
+    ri.appendChild(rg); rs.appendChild(ri); app.appendChild(rs);
+  }
+
+  /* CTA */
+  app.insertAdjacentHTML('beforeend', `<section class="sec" style="background:var(--ink2)"><div class="inn"><div class="ctab rv"><div class="lbl" style="display:flex;justify-content:center">Ready to Start?</div><h2>Begin your DriveReady<br>journey today</h2><p>Complete a quick enquiry or call us — we'll match you with the right instructor within 2 hours.</p><div class="ctab-acts"><button class="b-gold" onclick="oM('${o.name}','${o.pl}','${o.icon}')" style="font-size:.9rem;padding:13px 30px">📋 Enquire & Book</button><a href="tel:02089771234" class="b-ghost" style="font-size:.9rem;padding:13px 30px">📞 020 8977 1234</a></div></div></div></section>`);
+
+  app.insertAdjacentHTML('beforeend', callStrip());
+  app.insertAdjacentHTML('beforeend', mkFooter());
+}
+
+/* ══════════════════════════════
+   MODAL — LEAD QUALIFIER
+══════════════════════════════ */
+let mS=1, mD={};
+const SMETA=[
+  {t:'Tell us about you',     s:'Your contact details so we can reach you.'},
+  {t:'Your test situation',   s:'Help us understand your timeline.'},
+  {t:'Your experience level', s:'We tailor every lesson to your starting point.'},
+  {t:'Your challenges',       s:'We plan sessions around your specific weak spots.'},
+  {t:'Review & confirm',      s:'Check everything before we send your enquiry.'},
+];
+const SLBLS=['You','Test','Level','Needs','Review'];
+
+function oM(pkg,pl,icon) {
+  mD={pkg,pl,icon,testBooked:'',theory:'',lt:'',exp:'',struggles:[],notes:'',firstName:'',lastName:'',name:'',phone:'',email:'',post:'',day:'',time:''};
+  document.getElementById('mpkgn').textContent=pkg;
+  document.getElementById('mpkgi').textContent=icon||'🚗';
+  mS=1; renderM();
+  document.getElementById('mover').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function cM() { document.getElementById('mover').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('mover').addEventListener('click', e=>{ if(e.target===e.currentTarget) cM(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') cM(); });
+
+function renderM() {
+  const tot=5;
+  let pr='';
+  for(let i=1;i<=tot;i++){
+    const cls=i<mS?'done':i===mS?'act':'';
+    pr+=`<div class="pdot ${cls}">${i<mS?'✓':i}</div>`;
+    if(i<tot) pr+=`<div class="pline ${i<mS?'done':''}"></div>`;
+  }
+  document.getElementById('prow').innerHTML=pr;
+  document.getElementById('plbls').innerHTML=SLBLS.map((l,i)=>`<span class="plbl ${i+1<mS?'done':i+1===mS?'act':''}">${l}</span>`).join('');
+  document.getElementById('mtitle').textContent=SMETA[mS-1].t;
+  document.getElementById('msub').textContent=SMETA[mS-1].s;
+
+  const body=document.getElementById('mbody');
+  body.innerHTML=`<p class="merr" id="merr"></p>`;
+  const p=document.createElement('div'); p.className='sp act';
+
+  if(mS===1){
+    p.innerHTML=`<div class="frow"><div class="fg"><label>First Name *</label><input id="f1" placeholder="James" value="${mD.firstName||''}"></div><div class="fg"><label>Last Name *</label><input id="f2" placeholder="Smith" value="${mD.lastName||''}"></div></div><div class="fg"><label>Mobile Number *</label><input id="f3" type="tel" placeholder="07700 900000" value="${mD.phone||''}"></div><div class="fg"><label>Email Address *</label><input id="f4" type="email" placeholder="james@example.com" value="${mD.email||''}"></div><div class="fg"><label>Pickup Postcode *</label><input id="f5" placeholder="TW1 3SN" value="${mD.post||''}"></div><div class="frow"><div class="fg"><label>Preferred Day</label><select id="f6"><option>Any day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></div><div class="fg"><label>Preferred Time</label><select id="f7"><option>Any time</option><option>Morning (7–12pm)</option><option>Afternoon (12–5pm)</option><option>Evening (5–8pm)</option></select></div></div>`;
+  } else if(mS===2){
+    p.innerHTML=`<div class="fg"><label>Do you have a practical test booked? *</label><div class="rpills">${['Yes – date confirmed','Yes – waiting for a date','No – not yet booked','I\'ve already passed'].map(v=>`<div class="rp${mD.testBooked===v?' sel':''}" onclick="ps(this,'testBooked','${v}')">${v}</div>`).join('')}</div><div class="drev${mD.testBooked==='Yes – date confirmed'?' show':''}" id="drev"><div class="fg" style="margin-top:10px"><label>Test Date</label><input type="date" id="ftd" value="${mD.testDate||''}" onchange="mD.testDate=this.value"></div></div></div><div class="fg"><label>Have you passed your theory test? *</label><div class="rpills">${['Yes – passed ✓','No – not yet','Currently studying'].map(v=>`<div class="rp${mD.theory===v?' sel':''}" onclick="ps(this,'theory','${v}')">${v}</div>`).join('')}</div></div><div class="fg"><label>Transmission preference</label><div class="rpills">${['Manual 🚗','Automatic ⚡','Not sure yet'].map(v=>`<div class="rp${mD.lt===v?' sel':''}" onclick="ps(this,'lt','${v}')">${v}</div>`).join('')}</div></div>`;
+  } else if(mS===3){
+    const exp=[['🌱','Complete beginner','Never driven before'],['📚','Some prior lessons','Stopped & restarting'],['🚦','Reasonable experience','Getting close to test-ready'],['❌','Failed a test','Want to pass next time'],['🔄','Already hold a licence','Need a refresher'],['🌍','Foreign licence holder','Converting to UK']];
+    p.innerHTML=`<div class="fg"><label>Your current driving experience *</label><div class="cgrid">${exp.map(([ic,h,sub])=>`<div class="cc${mD.exp===h?' sel':''}" onclick="cs(this,'exp','${h}')"><span style="font-size:1.1rem;flex-shrink:0">${ic}</span><span><strong>${h}</strong><br><small style="color:var(--t3);font-weight:400">${sub}</small></span></div>`).join('')}</div></div>`;
+  } else if(mS===4){
+    const st=['Junctions & roundabouts','Parallel parking','Clutch control','Motorway driving','Observation & mirrors','Bay parking','Test nerves & anxiety','Night driving','Speed & hazard judgement'];
+    p.innerHTML=`<div class="fg"><label>Where do you struggle most? <span style="color:var(--t3);text-transform:none;letter-spacing:0;font-weight:400">(select all that apply)</span></label><div class="cgrid g3">${st.map(s=>`<div class="cc${mD.struggles.includes(s)?' sel':''}" onclick="ct(this,'${s}')">${s}</div>`).join('')}</div></div><div class="fg" style="margin-top:5px"><label>Additional needs or notes <span style="color:var(--t3);text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label><textarea id="fnotes" placeholder="e.g. I have dyslexia and prefer written feedback after lessons. Evenings only. Test booked at Isleworth on the 20th — need urgent preparation…">${mD.notes||''}</textarea></div>`;
+  } else if(mS===5){
+    const rows=[['Package',mD.pkg,true],['Name',mD.name||'—',false],['Mobile',mD.phone||'—',false],['Email',mD.email||'—',false],['Postcode',mD.post||'—',false],['Availability',`${mD.day||'Any day'}, ${mD.time||'Any time'}`,false],['Test booked',mD.testBooked||'—',false],['Theory test',mD.theory||'—',false],['Transmission',mD.lt||'Not specified',false],['Experience',mD.exp||'—',false],['Struggles',mD.struggles.length?mD.struggles.join(', '):'None selected',false],['Notes',mD.notes||'None',false]];
+    p.innerHTML=`<p style="font-size:.79rem;color:var(--t3);margin-bottom:13px;line-height:1.65">Please review your details before we send your enquiry to an instructor.</p><div class="sumg">${rows.map(([l,v,hi])=>`<div class="sumr"><span class="suml">${l}</span><span class="sumv${hi?' hi':''}">${v}</span></div>`).join('')}</div>`;
+  }
+
+  body.appendChild(p);
+  document.getElementById('mbk').style.visibility=mS>1?'visible':'hidden';
+  const nx=document.getElementById('mnx');
+  nx.textContent=mS===5?'Send Enquiry ✓':'Continue →';
+  nx.className=mS===5?'msub':'mnext';
+  document.getElementById('mftr').style.display='';
+}
+
+function ps(el,key,val){
+  mD[key]=val;
+  el.closest('.rpills').querySelectorAll('.rp').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+  if(key==='testBooked') document.getElementById('drev')?.classList.toggle('show',val==='Yes – date confirmed');
+}
+function cs(el,key,val){
+  mD[key]=val;
+  el.closest('.cgrid').querySelectorAll('.cc').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function ct(el,val){
+  const i=mD.struggles.indexOf(val);
+  if(i>-1){mD.struggles.splice(i,1);el.classList.remove('sel');}
+  else{mD.struggles.push(val);el.classList.add('sel');}
+}
+function showE(m){const e=document.getElementById('merr');if(e){e.textContent=m;}}
+function clearE(){const e=document.getElementById('merr');if(e)e.textContent='';}
+
+function valS(){
+  clearE();
+  if(mS===1){
+    const f1=document.getElementById('f1')?.value.trim();
+    const f3=document.getElementById('f3')?.value.trim();
+    const f4=document.getElementById('f4')?.value.trim();
+    const f5=document.getElementById('f5')?.value.trim();
+    if(!f1||!f3||!f4||!f5){showE('Please fill in all required fields.');return false;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f4)){showE('Please enter a valid email address.');return false;}
+    mD.firstName=f1; mD.lastName=document.getElementById('f2')?.value.trim()||'';
+    mD.name=`${mD.firstName} ${mD.lastName}`.trim();
+    mD.phone=f3; mD.email=f4; mD.post=f5;
+    mD.day=document.getElementById('f6')?.value||''; mD.time=document.getElementById('f7')?.value||'';
+  }
+  if(mS===2&&!mD.testBooked){showE('Please select your test status.');return false;}
+  if(mS===3&&!mD.exp){showE('Please select your experience level.');return false;}
+  if(mS===4)mD.notes=document.getElementById('fnotes')?.value||'';
+  return true;
+}
+function nS(){if(!valS())return;if(mS===5){subEnq();return;}mS++;renderM();}
+function pS(){if(mS>1){mS--;renderM();}}
+
+function subEnq(){
+  document.getElementById('mbody').innerHTML=`<div class="succ"><div class="scc">✓</div><h3>Enquiry Sent!</h3><p>Thanks, <strong>${mD.firstName||'there'}</strong>! Your instructor will call you within 2 hours to confirm your first lesson and answer any questions.</p><div class="cbox"><p>Can't wait? Call us now:</p><strong>📞 020 8977 1234</strong></div></div>`;
+  document.getElementById('mftr').style.display='none';
+  document.querySelectorAll('.pdot').forEach(d=>{d.className='pdot done';d.textContent='✓';});
+  document.querySelectorAll('.pline').forEach(l=>l.classList.add('done'));
+}
+
+/* ══════════════════════════════
+   BOOT
+══════════════════════════════ */
+renderHome();
+setTimeout(()=>{ initRev(); setTimeout(initMap,380); }, 70);
 </script>
-
 </body>
 </html>
-
-
-     
