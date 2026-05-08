@@ -319,31 +319,76 @@ nav.sc {
 
 
 /* ══════════════════════════════
-   FEATURES GRID
+   FEATURES GRID (Why DriveReady Section)
 ══════════════════════════════ */
-.fgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; grid-auto-rows:1fr }
+.fgrid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 16px; 
+    align-items: stretch; /* This stretches cards to the same height */
+}
+
 .fcard {
-  background:var(--ink3);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:var(--r); padding:30px 24px;
-  transition:all .28s; position:relative; overflow:hidden;
-  display:flex; flex-direction:column; height:100%;
+    background: var(--ink3);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: var(--r); 
+    padding: 30px 24px;
+    transition: all .28s; 
+    position: relative; 
+    overflow: hidden;
+    
+    /* These three lines ensure internal content alignment */
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
 }
-.fcard::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg,var(--blue),var(--gold));
-  opacity:0; transition:opacity .28s;
+
+.fcard p { 
+    font-size: .83rem; 
+    color: var(--t2); 
+    line-height: 1.72; 
+    flex-grow: 1; /* Pushes the card to fill the available space */
 }
-.fcard:hover { transform:translateY(-4px); border-color:rgba(255,255,255,.13); box-shadow:0 14px 44px rgba(0,0,0,.28) }
-.fcard:hover::before { opacity:1 }
-.ficon {
-  width:44px; height:44px;
-  background:rgba(37,99,235,.15); border:1px solid rgba(37,99,235,.25);
-  border-radius:10px; display:flex; align-items:center; justify-content:center;
-  font-size:1.2rem; margin-bottom:15px; flex-shrink:0;
+
+/* ══════════════════════════════
+   OFFER CARDS
+══════════════════════════════ */
+.ogrid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 18px; 
+    align-items: stretch; 
 }
-.fcard h3 { font-size:.97rem; font-weight:700; margin-bottom:7px; letter-spacing:-.02em }
-.fcard p { font-size:.83rem; color:var(--t2); line-height:1.72; flex:1 }
+
+.ocard {
+    background: var(--ink3); 
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: var(--r); 
+    overflow: hidden;
+    transition: all .28s; 
+    cursor: pointer; 
+    position: relative;
+    padding: 28px 24px 24px;
+    
+    /* Ensures all cards in the grid are the same height */
+    display: flex; 
+    flex-direction: column;
+    height: 100%;
+}
+
+.obody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Forces the body to expand */
+}
+
+.odesc { 
+    font-size: .8rem; 
+    color: var(--t3); 
+    margin-bottom: 18px; 
+    line-height: 1.62; 
+    flex-grow: 1; /* Forces the description area to take up all spare space */
+}
 
 /* ══════════════════════════════
    INSTRUCTOR SPLIT — branded car
