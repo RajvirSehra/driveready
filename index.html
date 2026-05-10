@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveReady | Driving Lessons in Twickenham & Isleworth</title>
+<meta name="description" content="Patient, professional driving lessons in Twickenham & Isleworth. Manual £38/hr · Automatic £40/hr. DVSA-approved, 94% first-time pass rate. WhatsApp us — we reply fast.">
+<link rel="canonical" href="https://driveready.co.uk">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"DriveReady","telephone":"+442089771234","address":{"@type":"PostalAddress","addressLocality":"Twickenham","addressRegion":"Greater London","postalCode":"TW1 3SN","addressCountry":"GB"},"priceRange":"£38–£45","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"312"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c1a3a;--navy2:#1a3260;--navy3:#2a4880;
+  --gold:#f59e0b;--gold-d:#d97706;--gold-l:#fef3c7;
+  --white:#ffffff;--off:#f5f7fb;--off2:#eaeff8;
+  --text:#1e2d4a;--text2:#627089;--text3:#94a3b8;--border:#dde5f1;
+  --green:#25D366;--green-d:#1da851;--green-l:#f0fdf4;
+  --r:12px;--rsm:8px;
+  --sh:0 4px 20px rgba(12,26,58,.09);--sh2:0 8px 36px rgba(12,26,58,.13);--sh3:0 16px 56px rgba(12,26,58,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:'Nunito',system-ui,-apple-system,sans-serif;background:var(--white);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.12;color:var(--navy);letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+button{font-family:'Nunito',sans-serif;cursor:pointer;border:none}
+.con{max-width:1060px;margin:0 auto;padding:0 20px}
+.sec{padding:76px 0}.sec-sm{padding:52px 0}.bg-off{background:var(--off)}
+/* fade */
+.fd{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.fd.in{opacity:1;transform:none}
+.fdl{opacity:0;transform:translateX(-18px);transition:opacity .5s ease,transform .5s ease}
+.fdl.in{opacity:1;transform:none}
+.fdr{opacity:0;transform:translateX(18px);transition:opacity .5s ease,transform .5s ease}
+.fdr.in{opacity:1;transform:none}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.92rem;padding:14px 26px;border-radius:var(--r);border:none;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;line-height:1.3}
+.bg{background:var(--gold);color:var(--navy);box-shadow:0 4px 20px rgba(245,158,11,.3)}
+.bg:hover{background:var(--gold-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,158,11,.42)}
+.bw{background:var(--green);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.28)}
+.bw:hover{background:var(--green-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.4)}
+.bn{background:var(--navy);color:#fff;box-shadow:0 4px 20px rgba(12,26,58,.22)}
+.bn:hover{background:var(--navy2);transform:translateY(-2px)}
+.bgh{background:transparent;color:var(--navy);border:2px solid var(--border);font-weight:700}
+.bgh:hover{border-color:var(--navy2);background:var(--off)}
+.blg{padding:16px 32px;font-size:1rem}
+.bsm{padding:10px 18px;font-size:.84rem}
+.bfl{width:100%}
+/* section labels */
+.slbl{font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:9px}
+.sh2{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;margin-bottom:12px}
+.ssub{font-size:.97rem;color:var(--text2);line-height:1.76;max-width:500px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .25s,box-shadow .25s}
+nav.sc{border-color:var(--border);box-shadow:var(--sh)}
+.navi{height:62px;max-width:1060px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;flex-shrink:0}
+.logo span{color:var(--gold)}
+.navl{display:flex;gap:24px;list-style:none;align-items:center}
+.navl a{font-size:.86rem;font-weight:600;color:var(--text2);transition:color .18s}
+.navl a:hover{color:var(--navy)}
+.navr{display:flex;align-items:center;gap:10px}
+.nph{font-size:.84rem;font-weight:700;color:var(--navy2);display:flex;align-items:center;gap:5px}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.ham span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px}
+/* mobile nav */
+.mobn{position:fixed;inset:0;z-index:895;background:rgba(12,26,58,.97);display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;transition:opacity .25s}
+.mobn.open{opacity:1}
+.mobn a{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:rgba(255,255,255,.85);transition:color .18s}
+.mobn a:hover{color:var(--gold)}
+.mobn-x{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.1);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer}
+/* sticky bar */
+.sbar{position:fixed;bottom:0;left:0;right:0;z-index:880;background:var(--white);border-top:1px solid var(--border);padding:10px 14px 12px;display:none;gap:9px;box-shadow:0 -4px 24px rgba(12,26,58,.1)}
+.sbar .btn{flex:1;border-radius:var(--rsm);font-size:.88rem;padding:13px 10px}
+/* wa float */
+.waf{position:fixed;bottom:80px;right:18px;z-index:870;display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+.watip{background:var(--navy);color:#fff;font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transform:translateX(6px);transition:all .22s}
+.waf:hover .watip{opacity:1;transform:translateX(0)}
+.wabtn{width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.42);transition:all .22s;animation:wap 2.5s ease-in-out 5s infinite}
+.wabtn:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(37,211,102,.55)}
+@keyframes wap{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.42)}50%{box-shadow:0 4px 28px rgba(37,211,102,.72),0 0 0 8px rgba(37,211,102,.1)}}
+/* HERO */
+.hero{padding-top:62px;background:linear-gradient(165deg,var(--off) 0%,#e6edf9 100%);min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--off2) 1px,transparent 1px),linear-gradient(90deg,var(--off2) 1px,transparent 1px);background-size:40px 40px;opacity:.4}
+.hero-l{padding:52px 40px 52px 24px;position:relative;z-index:1;max-width:560px;margin-left:auto}
+.rbadge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid #c6f6d5;border-radius:50px;padding:6px 14px;margin-bottom:22px;box-shadow:0 1px 8px rgba(12,26,58,.06)}
+.rbdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
+.rbtxt{font-size:.78rem;font-weight:700;color:#166534}
+.hero h1{font-size:clamp(2.1rem,4vw,3.3rem);margin-bottom:14px;font-weight:800}
+.hero h1 em{font-style:italic;color:var(--gold-d)}
+.hsub{font-size:1rem;color:var(--text2);line-height:1.78;margin-bottom:22px;font-weight:500}
+.trow{display:flex;gap:9px;margin-bottom:22px;flex-wrap:wrap}
+.tpill{display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--border);border-radius:50px;padding:7px 15px;font-size:.84rem;font-weight:700;color:var(--navy);box-shadow:0 1px 8px rgba(12,26,58,.06)}
+.tpill .pp{color:var(--gold-d)}
+.trust-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.trpill{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--border);border-radius:50px;padding:5px 12px;font-size:.76rem;font-weight:600;color:var(--text2);box-shadow:0 1px 8px rgba(12,26,58,.05)}
+.hcta{display:flex;flex-direction:column;gap:10px}
+.hctar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.hor{font-size:.82rem;color:var(--text3);font-weight:600}
+.hph{font-size:.88rem;font-weight:700;color:var(--navy2);display:flex;align-items:center;gap:5px}
+.hrn{font-size:.78rem;color:var(--text2);font-weight:600;display:flex;align-items:center;gap:5px}
+.hrev{display:flex;align-items:flex-start;gap:10px;background:#fff;border-radius:var(--r);padding:14px 16px;border-left:3px solid var(--gold);box-shadow:0 1px 8px rgba(12,26,58,.06);margin-top:22px}
+.hrstars{color:var(--gold);font-size:.85rem;flex-shrink:0;line-height:1.5}
+.hrtxt p{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:.84rem;color:var(--text);line-height:1.6}
+.hrtxt span{font-size:.73rem;color:var(--text2);margin-top:4px;display:block}
+.hero-r{position:relative;align-self:stretch;overflow:hidden;z-index:1}
+.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-rov{position:absolute;inset:0;background:linear-gradient(to right,var(--off) 0%,transparent 18%)}
+.hsc{position:absolute;bottom:28px;left:24px;background:#fff;border-radius:var(--r);padding:14px 18px;box-shadow:var(--sh2);display:flex;flex-direction:column;gap:4px;min-width:130px}
+.hsc strong{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:800;color:var(--navy)}
+.hsc span{font-size:.7rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+/* response strip */
+.rstrip{background:var(--navy)}
+.rstrip-in{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.07)}
+.rsi{padding:20px 24px;border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:13px}
+.rsi:last-child{border-right:none}
+.rsic{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.rsic.g{background:rgba(37,211,102,.15)}.rsic.o{background:rgba(245,158,11,.15)}.rsic.b{background:rgba(96,165,250,.12)}
+.rsit strong{display:block;font-size:.86rem;font-weight:700;color:#fff;margin-bottom:2px}
+.rsit span{font-size:.75rem;color:rgba(255,255,255,.5)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.step{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:28px 22px;position:relative;transition:box-shadow .22s,border-color .22s}
+.step:hover{box-shadow:var(--sh2);border-color:var(--navy3)}
+.stcon{position:absolute;top:38px;right:-10px;z-index:2;width:18px;height:18px;background:var(--off);border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--text3);font-weight:700}
+.step:last-child .stcon{display:none}
+.stn{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1rem;font-weight:800;margin-bottom:14px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:7px}
+.step p{font-size:.86rem;color:var(--text2);line-height:1.7}
+.stag{display:inline-flex;align-items:center;gap:5px;margin-top:12px;background:var(--off);border:1px solid var(--border);border-radius:50px;padding:4px 11px;font-size:.73rem;font-weight:700;color:var(--text2)}
+.stag.g{background:var(--green-l);border-color:#bbf7d0;color:#15803d}
+/* pricing */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.pkg{background:var(--white);border:2px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s}
+.pkg:hover{box-shadow:var(--sh2);border-color:var(--navy3);transform:translateY(-3px)}
+.pkg.feat{border-color:var(--gold)}
+.pbadge{text-align:center;font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:var(--gold);color:var(--navy);padding:6px}
+.ptop{padding:24px 22px 0}
+.picon{font-size:1.6rem;margin-bottom:10px;margin-top:18px}
+.plbl{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-bottom:5px}
+.pkg h3{font-size:1.12rem;font-weight:700;margin-bottom:8px}
+.pdesc{font-size:.86rem;color:var(--text2);line-height:1.68;margin-bottom:16px}
+.ppr{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 22px;background:var(--off)}
+.ppr strong{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:800;color:var(--navy);display:block;line-height:1}
+.ppr .pn{font-size:.79rem;color:var(--text2);font-weight:500}
+.ppr .ps{display:inline-block;background:var(--gold-l);color:var(--gold-d);font-size:.71rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:5px}
+.pbody{padding:18px 22px;flex:1;display:flex;flex-direction:column}
+.plist{list-style:none;margin-bottom:18px;flex:1;display:flex;flex-direction:column;gap:7px}
+.plist li{font-size:.84rem;color:var(--text);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
+.plist li::before{content:'✓';color:var(--gold-d);font-weight:800;flex-shrink:0;font-size:.8rem;margin-top:1px}
+.pcta .btn{width:100%;justify-content:center;border-radius:var(--rsm)}
+/* testimonials */
+.thdr{display:flex;align-items:center;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.tscore{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 18px;box-shadow:0 1px 8px rgba(12,26,58,.06)}
+.tsnum{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:800;color:var(--navy)}
+.tsstars{color:var(--gold);font-size:1rem}
+.tslbl{font-size:.75rem;color:var(--text2);font-weight:600}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tcard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:box-shadow .22s;position:relative}
+.tcard:hover{box-shadow:var(--sh2)}
+.tcbadge{position:absolute;top:16px;right:16px;background:var(--gold-l);color:var(--gold-d);font-size:.65rem;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase}
+.tcstars{color:var(--gold);font-size:.88rem;letter-spacing:2px;margin-bottom:10px}
+.tctxt{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:.92rem;color:var(--text);line-height:1.68;margin-bottom:16px}
+.tctxt::before{content:'\201C';color:var(--gold);font-size:1.3rem;line-height:0;vertical-align:-.3em;margin-right:2px}
+.tcauth{display:flex;align-items:center;gap:10px}
+.tcav{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy3));display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:800;font-size:.88rem;color:#fff;flex-shrink:0}
+.tcname{font-size:.86rem;font-weight:700;color:var(--navy)}
+.tcdet{font-size:.74rem;color:var(--text2);margin-top:1px}
+/* instructor */
+.iwrap{display:grid;grid-template-columns:400px 1fr;gap:60px;align-items:center}
+.iimgcol{position:relative}
+.iimg{width:100%;border-radius:16px;box-shadow:var(--sh3);aspect-ratio:4/5;object-fit:cover}
+.icreds{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.ctag{background:var(--off);border:1px solid var(--border);border-radius:50px;padding:6px 13px;font-size:.78rem;font-weight:700;color:var(--navy2);display:flex;align-items:center;gap:5px}
+.ilbl{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px}
+.iname{font-size:2rem;font-weight:800;margin-bottom:14px}
+.ibio{font-size:.95rem;color:var(--text2);line-height:1.82;margin-bottom:16px}
+.istats{display:flex;gap:0;background:var(--off);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px;width:fit-content}
+.ist{padding:14px 20px;text-align:center;border-right:1px solid var(--border)}
+.ist:last-child{border-right:none}
+.ist strong{display:block;font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--navy)}
+.ist span{font-size:.68rem;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.iacts{display:flex;gap:10px;flex-wrap:wrap}
+/* areas */
+.achips{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0}
+.achip{background:var(--white);border:1.5px solid var(--border);border-radius:50px;padding:7px 16px;font-size:.83rem;font-weight:600;color:var(--navy2);display:flex;align-items:center;gap:6px;transition:all .18s}
+.achip:hover{border-color:var(--navy2);background:var(--off2)}
+.achip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.tcbadge2{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;border-radius:var(--r);padding:14px 20px;font-size:.86rem;font-weight:600}
+/* faq */
+.fwrap{max-width:680px;margin:36px auto 0}
+.fi{border-bottom:1px solid var(--border)}
+.fq{width:100%;background:none;border:none;text-align:left;padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);transition:color .18s}
+.fq:hover{color:var(--navy2)}
+.fchev{width:26px;height:26px;border-radius:50%;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:.62rem;color:var(--text2);flex-shrink:0;transition:all .26s}
+.fi.open .fchev{background:var(--gold-l);color:var(--gold-d);transform:rotate(180deg)}
+.fans{max-height:0;overflow:hidden;transition:max-height .33s ease}
+.fans-in{padding-bottom:16px;font-size:.89rem;color:var(--text2);line-height:1.8}
+.fi.open .fans{max-height:200px}
+/* contact */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.clbl{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px}
+.ch{font-size:2.1rem;font-weight:800;margin-bottom:12px}
+.csub{font-size:.95rem;color:var(--text2);line-height:1.78;margin-bottom:28px}
+.cways{display:flex;flex-direction:column;gap:11px}
+.cway{display:flex;align-items:center;gap:12px;border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;transition:all .18s;text-decoration:none;background:var(--white)}
+.cway:hover{border-color:var(--navy2);box-shadow:0 1px 8px rgba(12,26,58,.06)}
+.cwi{width:40px;height:40px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.cwi.wa{background:var(--green-l)}.cwi.ph{background:#eff6ff}.cwi.em{background:#fff7ed}
+.cwlbl{font-size:.72rem;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.cwval{font-size:.92rem;font-weight:700;color:var(--navy)}
+.cwnote{font-size:.73rem;color:var(--green-d);font-weight:600;margin-top:1px}
+.qf{background:var(--off);border:1.5px solid var(--border);border-radius:16px;padding:28px}
+.qft{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.qfs{font-size:.84rem;color:var(--text2);margin-bottom:18px;line-height:1.6}
+.qrn{display:flex;align-items:center;gap:7px;background:var(--green-l);border:1px solid #bbf7d0;border-radius:var(--rsm);padding:10px 13px;margin-bottom:16px;font-size:.8rem;font-weight:700;color:#15803d}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:.73rem;font-weight:800;color:var(--navy2);margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase}
+.fg input,.fg select{width:100%;padding:12px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--rsm);font-family:'Nunito',sans-serif;font-size:.9rem;color:var(--text);outline:none;transition:border-color .18s,box-shadow .18s}
+.fg input:focus,.fg select:focus{border-color:var(--navy2);box-shadow:0 0 0 3px rgba(26,50,96,.07)}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fnote{font-size:.75rem;color:var(--text2);text-align:center;margin-top:10px}
+/* footer */
+footer{background:var(--navy);padding:48px 0 24px}
+.fgrid{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.flogo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:11px;display:block}
+.flogo span{color:var(--gold)}
+.fbrand p{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:230px}
+.fdvsa{display:inline-flex;align-items:center;gap:5px;margin-top:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:6px 11px;font-size:.72rem;color:rgba(255,255,255,.6);font-weight:600}
+.fcol h4{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:800;color:#fff;margin-bottom:13px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:8px}
+.fcol ul li a{font-size:.81rem;color:rgba(255,255,255,.5);transition:color .18s}
+.fcol ul li a:hover{color:var(--gold)}
+.fbtm{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbtm p,.fbtm a{font-size:.76rem;color:rgba(255,255,255,.35)}
+.fbtm a:hover{color:rgba(255,255,255,.65)}
+.fbtmr{display:flex;gap:16px}
+/* modal */
+.mbg{position:fixed;inset:0;background:rgba(12,26,58,.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:960;display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .22s}
+.mbg.open{opacity:1;pointer-events:all}
+.mbox{background:var(--white);border-radius:16px;max-width:420px;width:100%;overflow:hidden;box-shadow:var(--sh3);transform:translateY(14px) scale(.97);transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
+.mbg.open .mbox{transform:none}
+.mhdr{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);padding:22px 22px 18px;display:flex;justify-content:space-between;align-items:flex-start}
+.mhdr h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:#fff}
+.mhdr p{font-size:.8rem;color:rgba(255,255,255,.6);margin-top:3px}
+.mx{background:rgba(255,255,255,.12);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;cursor:pointer;flex-shrink:0;transition:background .18s}
+.mx:hover{background:rgba(255,255,255,.22)}
+.mbdy{padding:20px}
+.mrn{display:flex;align-items:center;gap:7px;background:var(--green-l);border:1px solid #bbf7d0;border-radius:var(--rsm);padding:9px 12px;margin-bottom:14px;font-size:.78rem;font-weight:700;color:#15803d}
+.mor{text-align:center;font-size:.78rem;color:var(--text3);margin:12px 0;position:relative}
+.mor::before,.mor::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:var(--border)}
+.mor::before{left:0}.mor::after{right:0}
+.malt{display:flex;flex-direction:column;gap:8px}
+.maltbtn{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rsm);font-size:.86rem;font-weight:700;color:var(--navy);transition:all .18s;text-decoration:none}
+.maltbtn:hover{border-color:var(--navy2);background:var(--off)}
+.mnote{font-size:.73rem;color:var(--text3);text-align:center;margin-top:12px}
+/* responsive */
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-l{padding:44px 20px 32px;max-width:100%;margin:0}
+  .hero-r{min-height:280px;max-height:340px}
+  .rstrip-in{grid-template-columns:1fr}
+  .rsi{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:15px 20px}
+  .rsi:last-child{border-bottom:none}
+  .steps{grid-template-columns:1fr}.stcon{display:none}
+  .pgrid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+  .tgrid{grid-template-columns:1fr}
+  .iwrap{grid-template-columns:1fr;gap:32px}
+  .iimg{max-width:340px;width:100%;margin:0 auto;aspect-ratio:3/2}
+  .istats{position:static;transform:none;margin-top:0}
+  .cgrid{grid-template-columns:1fr;gap:32px}
+  .fgrid{grid-template-columns:1fr;gap:24px}
+  .fbtm{flex-direction:column;text-align:center}
+  .navl{display:none}
+  .nph{display:none}
+  .ham{display:flex}
+  .sbar{display:flex}
+  .waf{bottom:76px;right:14px}
+  .wabtn{width:46px;height:46px;font-size:1.2rem}
+}
+@media(max-width:520px){
+  .hero h1{font-size:1.95rem}
+  .pgrid{max-width:100%}
+  .thdr{flex-direction:column;align-items:flex-start}
+  .hctar{flex-direction:column;align-items:stretch}
+  .hctar .btn{width:100%}
+  .trow{gap:7px}.trust-row{gap:6px}
+  .ist{border-right:none;border-bottom:1px solid var(--border)}
+  .ist:last-child{border-bottom:none}
+  .istats{flex-direction:column;width:100%}
+  .fgr{grid-template-columns:1fr}
+  .sec{padding:56px 0}.sec-sm{padding:40px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOAT -->
+<div class="waf">
+  <div class="watip">Message on WhatsApp</div>
+  <a class="wabtn" href="https://wa.me/447700900123?text=Hi%2C%20I'd%20like%20to%20enquire%20about%20driving%20lessons." target="_blank" rel="noopener" aria-label="WhatsApp DriveReady">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.986-1.309A9.942 9.942 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.66 0-3.215-.454-4.543-1.246l-.325-.194-3.37.884.898-3.284-.212-.34A7.964 7.964 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+  </a>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sbar" id="sbar">
+  <a href="https://wa.me/447700900123" class="btn bw" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="tel:02089771234" class="btn bgh">📞 Call</a>
+  <button class="btn bg" onclick="openM()">Book</button>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobn" id="mobn">
+  <button class="mobn-x" onclick="closeMob()">✕</button>
+  <a href="#how" onclick="closeMob()">How It Works</a>
+  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="#instructor" onclick="closeMob()">Instructor</a>
+  <a href="#reviews" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="navi">
+    <div class="logo">Drive<span>Ready</span></div>
+    <ul class="navl">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#instructor">Instructor</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="navr">
+      <a href="tel:02089771234" class="nph">📞 020 8977 1234</a>
+      <button class="btn bg bsm" onclick="openM()">Check Availability</button>
+      <button class="ham" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-l">
+    <div class="rbadge fd">
+      <span class="rbdot"></span>
+      <span class="rbtxt">Taking new learners · Fast availability checks</span>
+    </div>
+    <h1 class="fd" style="transition-delay:.05s">Calm, patient driving lessons in <em>Twickenham</em></h1>
+    <p class="hsub fd" style="transition-delay:.1s">DVSA-approved instruction in Twickenham, Isleworth &amp; surrounding areas. Beginner-friendly, flexible scheduling, free local pickup.</p>
+    <div class="trow fd" style="transition-delay:.14s">
+      <div class="tpill">🚗 Manual <span class="pp">£38/hr</span></div>
+      <div class="tpill">⚡ Automatic <span class="pp">£40/hr</span></div>
+    </div>
+    <div class="trust-row fd" style="transition-delay:.17s">
+      <div class="trpill">⭐ 4.9 · 312 reviews</div>
+      <div class="trpill">🎓 DVSA Approved</div>
+      <div class="trpill">📍 Isleworth Test Centre</div>
+    </div>
+    <div class="hcta fd" style="transition-delay:.21s">
+      <div class="hctar">
+        <a href="https://wa.me/447700900123?text=Hi%2C%20I'd%20like%20to%20check%20lesson%20availability." class="btn bw blg" target="_blank" rel="noopener">💬 Check Availability on WhatsApp</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span class="hor">or</span>
+        <button class="btn bg" onclick="openM()">Request a Callback</button>
+        <a href="tel:02089771234" class="hph">📞 020 8977 1234</a>
+      </div>
+      <div class="hrn"><span style="color:var(--green)">●</span> Usually replies within 2 hours · WhatsApp &amp; calls welcome</div>
+    </div>
+    <div class="hrev fd" style="transition-delay:.27s">
+      <div class="hrstars">★★★★★</div>
+      <div class="hrtxt">
+        <p>Passed first time at Isleworth. My instructor was so calm and patient — exactly what I needed as a nervous learner.</p>
+        <span>— Sarah M., Twickenham &nbsp;·&nbsp; Passed 1st time ✓</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-r fdr" style="transition-delay:.1s">
+    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=900&q=85&auto=format&fit=crop&crop=center" alt="Driving lesson in Twickenham — DriveReady" loading="eager">
+    <div class="hero-rov"></div>
+    <div class="hsc"><strong>94%</strong><span>First-time pass rate</span></div>
+  </div>
+</section>
+
+<!-- RESPONSE STRIP -->
+<div class="rstrip">
+  <div class="con">
+    <div class="rstrip-in">
+      <div class="rsi"><div class="rsic g">💬</div><div class="rsit"><strong>Replies within 2 hours</strong><span>WhatsApp or phone — your choice</span></div></div>
+      <div class="rsi"><div class="rsic o">📅</div><div class="rsit"><strong>Fast availability checks</strong><span>We'll find your first slot quickly</span></div></div>
+      <div class="rsi"><div class="rsic b">🚗</div><div class="rsit"><strong>Free pickup at your door</strong><span>All TW postcodes · no travel stress</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec bg-off" id="how">
+  <div class="con">
+    <div class="slbl fd">Getting started</div>
+    <h2 class="sh2 fd">From first message<br>to first lesson</h2>
+    <p class="ssub fd">Simple, fast, no confusing forms.</p>
+    <div class="steps">
+      <div class="step fd">
+        <div class="stcon">→</div>
+        <div class="stn">1</div>
+        <h3>Send a quick message</h3>
+        <p>WhatsApp us or leave your number. No commitment, no paperwork. Takes under 30 seconds.</p>
+        <div class="stag">💬 WhatsApp or callback form</div>
+      </div>
+      <div class="step fd" style="transition-delay:.1s">
+        <div class="stcon">→</div>
+        <div class="stn">2</div>
+        <h3>Get a fast response</h3>
+        <p>We reply within 2 hours — usually faster. We'll check availability, answer questions, and recommend the right package.</p>
+        <div class="stag g">⚡ Usually within 2 hours</div>
+      </div>
+      <div class="step fd" style="transition-delay:.2s">
+        <div class="stn">3</div>
+        <h3>Start your lessons</h3>
+        <p>First lesson confirmed, we pick you up at your door. Calm, beginner-friendly from day one.</p>
+        <div class="stag">🚗 Pickup at your door</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="con">
+    <div class="slbl fd">Lesson packages</div>
+    <h2 class="sh2 fd">Clear, simple pricing</h2>
+    <p class="ssub fd">No hidden costs. All lessons include free pickup. Not sure which to choose? We'll advise you.</p>
+    <div class="pgrid">
+      <div class="pkg fd">
+        <div class="ptop">
+          <div class="picon">🌱</div>
+          <div class="plbl">Pay as you go</div>
+          <h3>Beginner Lessons</h3>
+          <p class="pdesc">Start here if you're new or want to try before committing. Flexible 1–2 hour slots.</p>
+        </div>
+        <div class="ppr"><strong>£38<span style="font-size:1.1rem;font-family:'Nunito',sans-serif;font-weight:500">/hr</span></strong><div class="pn">Manual · £40/hr Automatic</div></div>
+        <div class="pbody">
+          <ul class="plist">
+            <li>DVSA-aligned structured lesson</li>
+            <li>Free pickup &amp; drop-off at your door</li>
+            <li>Same instructor every session</li>
+            <li>Written progress feedback</li>
+            <li>Flexible morning, afternoon &amp; evening</li>
+          </ul>
+          <div class="pcta"><button class="btn bg" onclick="openM('Beginner Lessons')">Check Availability</button></div>
+        </div>
+      </div>
+      <div class="pkg feat fd" style="transition-delay:.1s">
+        <div class="pbadge">⭐ Most popular</div>
+        <div class="ptop">
+          <div class="picon" style="margin-top:12px">📦</div>
+          <div class="plbl">Block booking</div>
+          <h3>Block Package</h3>
+          <p class="pdesc">Best value for most learners. Book hours upfront, save money, and progress faster.</p>
+        </div>
+        <div class="ppr"><strong>£720</strong><div class="pn">20 hours · Manual</div><div class="ps">Save £40 vs individual lessons</div></div>
+        <div class="pbody">
+          <ul class="plist">
+            <li>10-hr block from £370 (save £10)</li>
+            <li>20-hr block from £720 (save £40)</li>
+            <li>Structured lesson plan included</li>
+            <li>Free mock test &amp; debrief</li>
+            <li>Isleworth test route practice</li>
+          </ul>
+          <div class="pcta"><button class="btn bg" onclick="openM('Block Package')">Check Availability</button></div>
+        </div>
+      </div>
+      <div class="pkg fd" style="transition-delay:.2s">
+        <div class="ptop">
+          <div class="picon">🔥</div>
+          <div class="plbl">Fast-track</div>
+          <h3>Intensive Course</h3>
+          <p class="pdesc">Need your licence quickly? Daily sessions over 5 days or 2 weeks. Theory pass required.</p>
+        </div>
+        <div class="ppr"><strong>£599</strong><div class="pn">5 days · 20 hours</div></div>
+        <div class="pbody">
+          <ul class="plist">
+            <li>5-day course from £599</li>
+            <li>2-week course from £999</li>
+            <li>Daily 3–4 hour sessions</li>
+            <li>2 × mock tests included</li>
+            <li>Test booking assistance</li>
+          </ul>
+          <div class="pcta"><button class="btn bg" onclick="openM('Intensive Course')">Check Availability</button></div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:22px;font-size:.85rem;color:var(--text2)" class="fd">Refresher lessons also available from £42/hr · <a href="#contact" style="color:var(--navy2);font-weight:700;text-decoration:underline">Ask us →</a></p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec bg-off" id="reviews">
+  <div class="con">
+    <div class="slbl fd">Student reviews</div>
+    <h2 class="sh2 fd">Trusted by learners across Twickenham</h2>
+    <div class="thdr fd">
+      <div class="tscore"><div><div class="tsnum">4.9</div><div class="tsstars">★★★★★</div></div><div><div style="font-size:.84rem;font-weight:700;color:var(--navy)">Google Reviews</div><div class="tslbl">312 verified ratings</div></div></div>
+      <div class="tscore"><div><div class="tsnum">4.8</div><div class="tsstars">★★★★★</div></div><div><div style="font-size:.84rem;font-weight:700;color:var(--navy)">Trustpilot</div><div class="tslbl">Verified reviews</div></div></div>
+    </div>
+    <div class="tgrid">
+      <div class="tcard fd">
+        <div class="tcbadge">Passed 1st time</div>
+        <div class="tcstars">★★★★★</div>
+        <p class="tctxt">Passed first time at Isleworth after 24 lessons. My instructor was incredibly patient — always calm, never rushed. The test route practice made all the difference.</p>
+        <div class="tcauth"><div class="tcav">S</div><div><div class="tcname">Sarah M.</div><div class="tcdet">Twickenham · Manual lessons</div></div></div>
+      </div>
+      <div class="tcard fd" style="transition-delay:.1s">
+        <div class="tcbadge">Passed 1st time</div>
+        <div class="tcstars">★★★★★</div>
+        <p class="tctxt">Failed twice with another school. Switched to DriveReady, completed the 20-hour block and passed on my very next attempt. Wish I'd come here first.</p>
+        <div class="tcauth"><div class="tcav" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">J</div><div><div class="tcname">James T.</div><div class="tcdet">Feltham · 20-hour block</div></div></div>
+      </div>
+      <div class="tcard fd" style="transition-delay:.2s">
+        <div class="tcbadge">Passed 1st time</div>
+        <div class="tcstars">★★★★★</div>
+        <p class="tctxt">I had real driving anxiety and thought I'd never pass. James never pressured me, adapted completely to how I learn. Passed after 30 lessons — still amazed.</p>
+        <div class="tcauth"><div class="tcav" style="background:linear-gradient(135deg,#dc2626,#9333ea)">R</div><div><div class="tcname">Rebecca O.</div><div class="tcdet">St Margarets · Nervous learner</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px" class="fd">
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:14px">Join hundreds of learners who've passed with DriveReady</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/447700900123" class="btn bw" target="_blank" rel="noopener">💬 WhatsApp Us Now</a>
+        <button class="btn bn" onclick="openM()">Request a Callback</button>
+      </div>
+      <p style="font-size:.76rem;color:var(--text3);margin-top:10px">Usually replies within 2 hours · Mon–Sat 7am–8pm</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="sec" id="instructor">
+  <div class="con">
+    <div class="iwrap">
+      <div class="iimgcol fdl">
+        <img class="iimg" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=700&q=85&auto=format&fit=crop&crop=faces,center" alt="James Harris — DriveReady DVSA-approved driving instructor" loading="lazy">
+        <div class="icreds">
+          <div class="ctag">✅ DVSA ADI Licensed</div>
+          <div class="ctag">🔒 DBS Checked</div>
+          <div class="ctag">🚗 Manual &amp; Auto</div>
+          <div class="ctag">😌 Nervous learner specialist</div>
+        </div>
+      </div>
+      <div class="fdr">
+        <div class="ilbl">Your instructor</div>
+        <div class="iname">James Harris</div>
+        <p class="ibio">I've been teaching learners to drive in Twickenham and the surrounding area for over 15 years. I grew up locally — I know these roads and the Isleworth Test Centre routes better than anyone.</p>
+        <p class="ibio">I work particularly well with nervous learners and people who've had difficult experiences elsewhere. My approach is calm, structured, and completely judgment-free. We go at your pace.</p>
+        <div class="istats">
+          <div class="ist"><strong>15+</strong><span>Years teaching</span></div>
+          <div class="ist"><strong>94%</strong><span>Pass rate</span></div>
+          <div class="ist"><strong>ADI</strong><span>Certified</span></div>
+        </div>
+        <div class="iacts">
+          <a href="https://wa.me/447700900123" class="btn bw" target="_blank" rel="noopener">💬 Message James</a>
+          <button class="btn bg" onclick="openM()">Check Availability</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec-sm bg-off">
+  <div class="con">
+    <div class="slbl fd">Coverage</div>
+    <h2 class="sh2 fd">We come to you</h2>
+    <p style="font-size:.95rem;color:var(--text2);line-height:1.75;max-width:500px" class="fd">Free pickup and drop-off on every lesson. Covering all postcodes around the Isleworth Test Centre.</p>
+    <div class="achips fd">
+      <div class="achip">Twickenham</div><div class="achip">Isleworth</div><div class="achip">Richmond</div>
+      <div class="achip">Whitton</div><div class="achip">St Margarets</div><div class="achip">Strawberry Hill</div>
+      <div class="achip">Hampton</div><div class="achip">Feltham</div><div class="achip">Hounslow</div>
+      <div class="achip">Brentford</div><div class="achip">Kew</div><div class="achip">East Twickenham</div>
+    </div>
+    <div class="fd"><div class="tcbadge2">📍 Isleworth Test Centre — every examiner route practised before your test</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="con">
+    <div class="slbl fd" style="text-align:center">Questions</div>
+    <h2 class="sh2 fd" style="text-align:center">Quick answers</h2>
+    <div class="fwrap">
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">How many lessons will I need?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">Every learner is different. Our students typically take 20–35 professional lessons. We give honest, no-pressure guidance throughout — you'll always know where you stand.</div></div></div>
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">Manual or automatic — which is right for me?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">Manual (£38/hr) covers all vehicles. Automatic (£40/hr) is faster to learn and better if clutch control feels stressful. Not sure? Just ask — we'll help you decide.</div></div></div>
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">Do I need my theory test before starting?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">No — you can start lessons first. Practical experience often helps with theory study. You'll need a theory pass before booking your DVSA practical test.</div></div></div>
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">How quickly can I get my first lesson?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">Get in touch and we'll check availability immediately. In most cases we can get your first lesson booked within the same week — sometimes sooner. WhatsApp is the fastest way to check.</div></div></div>
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">I'm a nervous driver — is that okay?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">Absolutely. James specialises in nervous and anxious learners. We go at your pace, keep things calm, and never pressure you. Many of our best reviews come from people who thought they'd never learn to drive.</div></div></div>
+      <div class="fi fd"><button class="fq" onclick="toggleFaq(this)">Can I cancel or reschedule?<div class="fchev">▼</div></button><div class="fans"><div class="fans-in">Yes — free cancellation with 48 hours' notice. Emergencies are handled with common sense. Lessons cancelled with less than 48 hours' notice may use a session from a block booking.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec bg-off" id="contact">
+  <div class="con">
+    <div class="cgrid">
+      <div class="fdl">
+        <div class="clbl">Get in touch</div>
+        <h2 class="ch">Ready to start?<br>We respond fast.</h2>
+        <p class="csub">Message, call, or WhatsApp — whichever feels easiest. We reply quickly and we'll have availability checked before you hang up.</p>
+        <div class="cways">
+          <a href="https://wa.me/447700900123?text=Hi%2C%20I'd%20like%20to%20enquire%20about%20driving%20lessons." class="cway" target="_blank" rel="noopener">
+            <div class="cwi wa">💬</div>
+            <div><div class="cwlbl">WhatsApp — fastest</div><div class="cwval">Message James directly</div><div class="cwnote">⚡ Usually replies within 2 hours</div></div>
+          </a>
+          <a href="tel:02089771234" class="cway">
+            <div class="cwi ph">📞</div>
+            <div><div class="cwlbl">Call us</div><div class="cwval">020 8977 1234</div><div class="cwnote" style="color:var(--text2)">Mon–Sat · 7am–8pm</div></div>
+          </a>
+          <a href="mailto:hello@driveready.com" class="cway">
+            <div class="cwi em">✉️</div>
+            <div><div class="cwlbl">Email</div><div class="cwval">hello@driveready.com</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="qf fdr">
+        <h3 class="qft">Request a callback</h3>
+        <p class="qfs">Leave your name and number. We'll call or WhatsApp you back within 2 hours.</p>
+        <div class="qrn"><span style="font-size:1rem">💬</span>We usually reply within 2 hours — often much faster</div>
+        <div class="fgr">
+          <div class="fg"><label>Your name *</label><input type="text" id="c-name" placeholder="Sarah" autocomplete="given-name"></div>
+          <div class="fg"><label>Mobile *</label><input type="tel" id="c-phone" placeholder="07700 900000" autocomplete="tel"></div>
+        </div>
+        <div class="fg"><label>Interested in</label>
+          <select id="c-pkg">
+            <option>Beginner Lessons — Manual (£38/hr)</option>
+            <option>Beginner Lessons — Automatic (£40/hr)</option>
+            <option>Block Package — 10 hours</option>
+            <option>Block Package — 20 hours (best value)</option>
+            <option>Intensive Course — 5 day</option>
+            <option>Intensive Course — 2 week</option>
+            <option>Refresher Lessons (£42/hr)</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+        <button class="btn bg bfl" onclick="submitContact()" style="margin-top:4px;justify-content:center">Request Callback →</button>
+        <p class="fnote">No commitment · We reply within 2 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="con">
+    <div class="fgrid">
+      <div class="fbrand">
+        <span class="flogo">Drive<span>Ready</span></span>
+        <p>DVSA-approved driving school serving Twickenham, Isleworth and surrounding areas. Patient, professional, beginner-friendly.</p>
+        <div class="fdvsa">🏆 DVSA Approved · ADI Certified · DBS Checked</div>
+      </div>
+      <div class="fcol">
+        <h4>Lessons</h4>
+        <ul>
+          <li><a href="#pricing">Beginner Lessons — £38/hr</a></li>
+          <li><a href="#pricing">Automatic Lessons — £40/hr</a></li>
+          <li><a href="#pricing">Block Packages — from £370</a></li>
+          <li><a href="#pricing">Intensive Courses — from £599</a></li>
+          <li><a href="#contact">Refresher Lessons — £42/hr</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:02089771234">📞 020 8977 1234</a></li>
+          <li><a href="https://wa.me/447700900123" target="_blank" rel="noopener">💬 WhatsApp James</a></li>
+          <li><a href="mailto:hello@driveready.com">✉ hello@driveready.com</a></li>
+          <li><a>Twickenham, TW1 3SN</a></li>
+          <li><a>Mon–Sat · 7am–8pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbtm">
+      <p>© 2025 DriveReady. All rights reserved.</p>
+      <div class="fbtmr"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="mbg" id="mbg" onclick="if(event.target===this)closeM()">
+  <div class="mbox">
+    <div class="mhdr">
+      <div><h3>Check Availability</h3><p id="msub">Leave your number — we'll reply within 2 hours.</p></div>
+      <button class="mx" onclick="closeM()">✕</button>
+    </div>
+    <div class="mbdy">
+      <div class="mrn"><span>💬</span>Usually replies within 2 hours · WhatsApp &amp; calls welcome</div>
+      <div class="fgr">
+        <div class="fg"><label>Your name *</label><input type="text" id="m-name" placeholder="Sarah" autocomplete="given-name"></div>
+        <div class="fg"><label>Mobile *</label><input type="tel" id="m-phone" placeholder="07700 900000" autocomplete="tel"></div>
+      </div>
+      <div class="fg"><label>Interested in</label>
+        <select id="m-pkg">
+          <option>Beginner Lessons — Manual (£38/hr)</option>
+          <option>Beginner Lessons — Automatic (£40/hr)</option>
+          <option>Block Package — 20 hours (best value)</option>
+          <option>Intensive Course</option>
+          <option>Refresher Lessons</option>
+          <option>Not sure — need advice</option>
+        </select>
+      </div>
+      <button class="btn bg bfl" onclick="submitM()" style="margin-top:2px;justify-content:center">Request Callback →</button>
+      <div class="mor">or contact us directly</div>
+      <div class="malt">
+        <a href="https://wa.me/447700900123" class="maltbtn" target="_blank" rel="noopener">💬 Message on WhatsApp — fastest reply</a>
+        <a href="tel:02089771234" class="maltbtn">📞 Call 020 8977 1234</a>
+      </div>
+      <p class="mnote">No commitment required · Mon–Sat 7am–8pm</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* NAV */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>44),{passive:true});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(!el)return;
+    e.preventDefault();
+    const nh=document.getElementById('nav').offsetHeight;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-nh-10,behavior:'smooth'});
+    closeMob();
+  });
+});
+
+/* MOBILE NAV */
+function openMob(){const n=document.getElementById('mobn');n.style.display='flex';requestAnimationFrame(()=>n.classList.add('open'));document.body.style.overflow='hidden'}
+function closeMob(){const n=document.getElementById('mobn');n.classList.remove('open');setTimeout(()=>{if(!n.classList.contains('open'))n.style.display='none'},260);document.body.style.overflow=''}
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fd,.fdl,.fdr').forEach(el=>ro.observe(el));
+
+/* FAQ */
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.fi.open').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+/* MODAL */
+function openM(pkg){
+  if(pkg){
+    const sel=document.getElementById('m-pkg');
+    const l=pkg.toLowerCase();
+    for(let i=0;i<sel.options.length;i++){if(sel.options[i].text.toLowerCase().includes(l.split(' ')[0])){sel.selectedIndex=i;break}}
+    document.getElementById('msub').textContent=`Enquiring about: ${pkg} — we'll reply within 2 hours.`;
+  }
+  document.getElementById('mbg').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('m-name').focus(),80);
+}
+function closeM(){document.getElementById('mbg').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+function submitM(){
+  const n=document.getElementById('m-name').value.trim();
+  const p=document.getElementById('m-phone').value.trim();
+  if(!n||!p){alert('Please enter your name and mobile number.');return}
+  document.querySelector('.mbox .mbdy').innerHTML=`<div style="text-align:center;padding:28px 12px"><div style="font-size:2.8rem;margin-bottom:14px">✅</div><h3 style="font-family:'Fraunces',serif;font-size:1.3rem;color:var(--navy);margin-bottom:8px">Callback requested!</h3><p style="color:var(--text2);font-size:.9rem;line-height:1.72;margin-bottom:18px">Thanks <strong>${n.split(' ')[0]}</strong> — we'll call or WhatsApp <strong>${p}</strong> within 2 hours to confirm availability.</p><a href="https://wa.me/447700900123" class="btn bw" style="display:inline-flex" target="_blank" rel="noopener">💬 Message on WhatsApp in the meantime</a></div>`;
+}
+
+function submitContact(){
+  const n=document.getElementById('c-name').value.trim();
+  const p=document.getElementById('c-phone').value.trim();
+  if(!n||!p){alert('Please enter your name and mobile number.');return}
+  document.querySelector('.qf').innerHTML=`<div style="text-align:center;padding:28px 10px"><div style="font-size:2.5rem;margin-bottom:12px">✅</div><h3 style="font-family:'Fraunces',serif;font-size:1.2rem;color:var(--navy);margin-bottom:7px">Enquiry sent!</h3><p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-bottom:16px">Thanks, <strong>${n.split(' ')[0]}</strong>! We'll be in touch within 2 hours.</p><a href="https://wa.me/447700900123" class="btn bw" style="display:inline-flex" target="_blank" rel="noopener">💬 WhatsApp for a faster reply</a></div>`;
+}
+</script>
+</body>
+</html>
